@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obrazy</title>
+    <link rel="stylesheet" href="../main.css" />
+  </head>
+  <body>
+    <h1>Obrazy - img, picture</h1>
+    <main>
+      <h3>Element img</h3>
+      <!-- element img -->
+      <img src="../assets/img/mountains6.jpg" alt="góry" />
+
+      <!-- img z srcset  -->
+      <!-- sizes: rozmiar img -->
+      <h3>Img z srcset</h3>
+      <!-- prettier-ignore -->
+      <img
+        srcset="
+          ../assets/img/mountains5-400.jpg 400w, 
+          ../assets/img/mountains5-800.jpg 800w, 
+          ../assets/img/mountains5.jpg 1200w"
+        sizes="
+          (max-width: 600px) 300px, 
+          (max-width: 800px) 700px, 
+          1100px"
+        alt="góry"
+      />
+
+      <h3>Picture - różne formaty</h3>
+      <!-- element picture - pozwala na różne źródła/formaty obrazka -->
+      <!-- formaty -->
+      <picture>
+        <source srcset="../assets/img/mountains4.jxl" type="image/jxl" />
+        <source srcset="../assets/img/mountains4.avif" type="image/avif" />
+        <source srcset="../assets/img/mountains4.webp" type="image/webp" />
+        <img src="../assets/img/mountains4.jpg" alt="Góry" />
+      </picture>
+
+      <h3>Picture z media queries na szerokość ekranu</h3>
+      <!-- media queries -->
+      <!-- w odróżnieniu od srcset i sizes - tu szerokość img zależy od pliku -->
+      <picture>
+        <source media="(max-width: 400px)" srcset="../assets/img/mountains3-400.jpg" />
+        <source media="(max-width: 800px)" srcset="../assets/img/mountains3-800.jpg" />
+        <img src="../assets/img/mountains3.jpg" alt="obrazek fallback" />
+      </picture>
+
+      <h3>Picture z media queries na orientację ekranu</h3>
+      <!-- media - orientacja ekranu -->
+      <picture>
+        <source media="(orientation: portrait)" srcset="../assets/img/mountains7-portrait.jpg" />
+        <source media="(orientation: landscape)" srcset="../assets/img/mountains7.jpg" />
+        <img src="../assets/img/mountains7.jpg" alt="obrazek fallback" />
+      </picture>
+    </main>
+  </body>
+</html>
