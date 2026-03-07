@@ -1,0 +1,45 @@
+﻿body {
+    background: #fafafa;
+}
+header {
+    height: 150px;
+}
+aside, #main, #col_right {
+    display: inline-table;
+    vertical-align: top;
+}
+aside {
+    background: #75c8a0; 
+    width: 150px; 
+    height: 500px;
+}
+#container {
+    width: 960px;
+    margin: 0 auto;
+}
+#main {
+    background: green; 
+    width: 660px; 
+    height: 500px;
+}
+
+#col_right {
+    background: yellow; 
+    width: 150px; 
+    height: 500px;
+}
+footer {
+    background: grey; 
+    height: 150px;
+}
+
+.backgrey {
+    background: #808080;
+}
+
+.margin10 {
+    margin: 0;
+}
+
+
+

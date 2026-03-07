@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="css-selectors.css" />
+  </head>
+  <body>
+    <h1>CSS - selektory</h1>
+    <main>
+      <!-- Selektor elementu -->
+      <p>To jest paragraf co ma kolorek</p>
+
+      <!-- Selektor klasy -->
+      <div class="card">Kartka z klasą. I paddingiem 20px</div>
+
+      <!-- Selektor ID -->
+      <header id="header">Nagłówek z id o wysokości 80px</header>
+
+      <!-- Selektor potomka -->
+      <article>
+        <p>Paragraf wewnątrz article ze zwiększonym interlinią 1.6</p>
+        <div>
+          <p>Paragraf wewnątrz div wewnątrz article</p>
+        </div>
+      </article>
+
+      <!-- Selektor dziecka -->
+      <ul>
+        <li>Element listy - kwadratowy punktor</li>
+        <li>Drugi element</li>
+      </ul>
+
+      <!-- Selektor atrybutu -->
+      <input disabled type="text" placeholder="Input text z szarą obramówką" />
+
+      <!-- Pseudo-klasa :hover -->
+      <button>Przycisk - najedź myszą (zmieni tło )</button>
+
+      <!-- Pseudo-klasa :focus -->
+      <input type="text" placeholder="Kliknij aby zobaczyć kolor outline" />
+
+      <!-- Pseudo-klasa :nth-child(odd) -->
+      <ul>
+        <li>Element 1 - szare tło</li>
+        <li>Element 2</li>
+        <li>Element 3 - szare tło</li>
+        <li>Element 4</li>
+      </ul>
+
+      <!-- Pseudo-klasa :not() -->
+      <button class="primary active bold">Przycisk primary</button>
+      <button>Przycisk zwykły - półprzezroczysty (opacity: 0.7)</button>
+
+      <!-- Pseudo-klasa :is() -->
+      <h1>Nagłówek h1 - sans-serif</h1>
+      <h2>Nagłówek h2 - sans-serif</h2>
+      <h3>Nagłówek h3 - sans-serif</h3>
+
+      <!-- Pseudo-klasa :has() -->
+      <div class="card">
+        <img src="https://picsum.photos/200/300" alt="obrazek" />
+        Card z obrazkiem - padding-top: 0
+      </div>
+      <div class="card">Card bez obrazka - normalny padding</div>
+    </main>
+  </body>
+</html>
