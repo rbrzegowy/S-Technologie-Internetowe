@@ -1,0 +1,90 @@
+/* nawigacja */
+.nav {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 4px;
+  background: #f77e7d;
+  padding: 8px 16px;
+  margin-bottom: 4px;
+  list-style: none;
+  /* height: 1000px; */
+}
+
+#oferta {
+  display: inline-block;
+  height: 100px;
+  /* order: 1; */
+  flex-grow: 10;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100px;
+  flex: 1 1 auto;
+  /* order: 2; */
+}
+
+.nav a:hover {
+  background: #fff;
+  color: #f77e7d;
+}
+
+.nav a.logo {
+  font-weight: bold;
+}
+
+/* case 1 – domyślne: flex-start */
+.nav-start {
+  justify-content: flex-start;
+}
+
+/* case 2 – center */
+.nav-center {
+  justify-content: center;
+}
+
+/* case 3 – flex-end */
+.nav-end {
+  justify-content: flex-end;
+}
+
+/* case 4 – space-between */
+.nav-between {
+  justify-content: space-between;
+}
+
+/* case 5 – space-around */
+.nav-around {
+  justify-content: space-around;
+}
+
+/* case 6 – space-evenly */
+.nav-evenly {
+  justify-content: space-evenly;
+}
+
+/* case 7 – logo po lewej, reszta po prawej dzięki margin-left: auto */
+.nav-logo-left .logo {
+  margin-right: auto;
+}
+
+/* galeria  */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+}
+
+.gallery img {
+  /* width: 250px; */
+  flex: 1 1 250px;
+  max-width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+}

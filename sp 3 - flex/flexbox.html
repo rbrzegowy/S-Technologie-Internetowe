@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="flexbox.css" />
+    <title>Flexbox</title>
+  </head>
+  <body>
+    <header>
+      <h1>Flexbox</h1>
+    </header>
+    <main>
+      <nav class="nav">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 1: justify-content: flex-start (domyślne) -->
+      <nav class="nav nav-start">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 2: justify-content: center -->
+      <nav class="nav nav-center">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 3: justify-content: flex-end -->
+      <nav class="nav nav-end">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 4: justify-content: space-between -->
+      <nav class="nav nav-between">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 5: justify-content: space-around -->
+      <nav class="nav nav-around">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#" id="oferta">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 6: justify-content: space-evenly -->
+      <nav class="nav nav-evenly">
+        <a href="#">Strona główna</a>
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+      </nav>
+
+      <!-- case 7: logo po lewej, linki po prawej (margin-left: auto) -->
+      <nav class="nav nav-logo-left">
+        <a href="#" class="logo">Strona główna</a>
+        <!-- <div> -->
+        <a href="#">O nas</a>
+        <a href="#">Oferta</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Blog</a>
+        <a href="#">Kontakt</a>
+        <!--  -->
+      </nav>
+      <div class="gallery">
+        <img src="assets/img/cavern1.jpg" alt="cavern 1" />
+        <img src="assets/img/cavern2.jpg" alt="cavern 2" />
+        <img src="assets/img/cavern3.jpg" alt="cavern 3" />
+        <img src="assets/img/house1.jpg" alt="house 1" />
+        <img src="assets/img/house2.jpg" alt="house 2" />
+        <img src="assets/img/house3.jpg" alt="house 3" />
+        <img src="assets/img/house4.jpg" alt="house 4" />
+        <img src="assets/img/house5.jpg" alt="house 5" />
+        <img src="assets/img/mountains1.jpg" alt="mountains 1" />
+        <img src="assets/img/mountains2.jpg" alt="mountains 2" />
+        <img src="assets/img/mountains3.jpg" alt="mountains 3" />
+        <img src="assets/img/mountains4.jpg" alt="mountains 4" />
+        <img src="assets/img/mountains5.jpg" alt="mountains 5" />
+        <img src="assets/img/mountains6.jpg" alt="mountains 6" />
+        <img src="assets/img/mountains7.jpg" alt="mountains 7" />
+      </div>
+    </main>
+  </body>
+</html>

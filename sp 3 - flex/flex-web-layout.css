@@ -1,0 +1,70 @@
+:root {
+  --border-width: 2px;
+  --border-color: #999;
+}
+body {
+  background: lightgrey;
+}
+main {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+main header {
+  /* height: 150px; */
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--border-width) solid var(--border-color);
+  margin-bottom: 20px;
+}
+a {
+  background: #90c661;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+/* 
+Każdy ul wewnątrz każdego nav
+nav ul {}
+*/
+nav {
+  width: 70%;
+}
+nav > ul {
+  /* zmiana punktorów listy */
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+  justify-content: space-evenly;
+}
+section {
+  display: flex;
+  /* flex-direction: column; */
+}
+aside {
+  width: 200px;
+  border-right: var(--border-width) solid var(--border-color);
+  padding: 20px;
+}
+article {
+  width: 800px;
+  min-height: 400px;
+  padding: 20px;
+}
+#right {
+  width: 200px;
+  padding: 20px;
+  border-left: var(--border-width) solid var(--border-color);
+}
+footer {
+  margin-top: 20px;
+  height: 150px;
+  border-top: var(--border-width) solid var(--border-color);
+  padding: 20px;
+}
