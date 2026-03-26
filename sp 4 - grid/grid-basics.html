@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Grid Layout</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./grid-basics.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Grid - podstawy</h1>
+    </header>
+    <main>
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">1</span>
+          <h2>Włączenie grid</h2>
+          <ul>
+            <li>Kontener staje sie gridem</li>
+            <li>Brak definicji wierszy i kolumn</li>
+            <li>Domyślnie - układ jednokolumnowy</li>
+            <li>Nowe wiersze/kolumny tworzone są automatycznie (grid-auto-flow)</li>
+            <li>Pomiędzy pojemnikami można zdefiniować odstęp (gap)</li>
+          </ul>
+          <code class="code">
+            display: grid; <br />
+            gap: 12px; <br />
+            grid-auto-flow: row;
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-1">
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+          <div class="grid-item">5</div>
+          <div class="grid-item">6</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">2</span>
+          <h2>Definiowanie kolumn</h2>
+          <ul>
+            <li>Dzielimy kontener na kolumny</li>
+            <li>Nowa jednostka: 1fr</li>
+            <li>Elementy w pojemniku sa rozmieszczone w kolejnych kolumnach</li>
+          </ul>
+          <code class="code">grid-template-columns: 1fr 300px 1fr;</code>
+        </div>
+        <div class="demo-grid demo-grid-step-2">
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+          <div class="grid-item">5</div>
+          <div class="grid-item">6</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">3</span>
+          <h2>Wiersze - wysokość</h2>
+          <ul>
+            <li>Używamy grid-auto-rows do ustawienia wysokości wierszy</li>
+            <li>Stosujemy przy definiowaniu siatki</li>
+            <li>Nie znamy ilości elementów w kontenerze</li>
+          </ul>
+          <code class="code">grid-auto-rows: 90px;</code>
+        </div>
+        <div class="demo-grid demo-grid-step-3">
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+          <div class="grid-item">5</div>
+          <div class="grid-item">6</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">4</span>
+          <h2>Wyrównanie w gridzie</h2>
+          <ul>
+            <li>justify-items i align-items wyrównują zawartość wewnątrz pojedynczych komórek</li>
+            <li>justify-content i align-content ustawiają położenie całej siatki w kontenerze</li>
+            <li>Pojedynczy element może nadpisać wyrównanie przez justify-self i align-self</li>
+            <li>Skróty do justify- i align-: place-content, place-items, place-self</li>
+          </ul>
+          <code class="code">
+            justify-items: end; align-items: center;<br />
+            justify-content: space-evenly; align-content: space-evenly;
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-align">
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+          <div class="grid-item grid-item-5">5</div>
+          <div class="grid-item">6</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">5</span>
+          <h2>Rozciąganie elementów</h2>
+          <ul>
+            <li>Wybrane elementy mogą zajmować więcej niż jedną kolumnę/wiersz</li>
+            <li>Odpowiednik rowspan/colspan w tabelach</li>
+          </ul>
+          <code class="code">
+            grid-column: span 2;<br />
+            grid-row: span 2;
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-4">
+          <article class="grid-item grid-item-wide">1</article>
+          <div class="grid-item">2</div>
+          <article class="grid-item grid-item-tall">3</article>
+          <div class="grid-item">4</div>
+          <div class="grid-item">5</div>
+          <div class="grid-item">6</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">6</span>
+          <h2>Pozycjonowanie elementów</h2>
+          <ul>
+            <li>Elementy można pozycjonować przez podanie numeru linii - start/koniec</li>
+            <li>Linie można też nazwać (i używać nazw zamiast numerów)</li>
+            <li>Dwa lub więcej elementów może zajmować ten sam obszar (i nachodzić na siebie)</li>
+            <li>Warstwy kontrolujemy przez z-index</li>
+          </ul>
+          <code class="code">
+            grid-template-columns: [full-start] 1fr [content-start] 1fr [center-start] 1fr [content-end] 1fr [aside-start] 1fr [aside-end] 1fr [full-end];<br />
+            .a { grid-column: full-start / content-end; grid-row: top / lower; }<br />
+            .b { grid-column: center-start / aside-end; grid-row: middle / bottom; z-index: 2; }<br />
+            .d { justify-self: end; align-self: start; }
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-5">
+          <article class="grid-item grid-item-line-a">A: full-start / content-end</article>
+          <article class="grid-item grid-item-line-b">B: center-start / aside-end</article>
+          <article class="grid-item grid-item-line-c">C: aside-start / full-end</article>
+          <article class="grid-item grid-item-line-d">D: self -> end / start</article>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">7</span>
+          <h2>Dodatkowe funkcje do definiowania siatki</h2>
+          <ul>
+            <li>repeat() - powtarzanie kolumn lub wierszy</li>
+            <li>minmax() - minimalna/maksymalna wartość (tutaj - szerokość)</li>
+            <li>fit-content(max) - szerokość dopasowana do zawartości, nie większa niż max</li>
+          </ul>
+          <code class="code">
+            grid-template-columns: repeat(2, minmax(140px, 1fr));<br />
+            grid-template-columns: fit-content(220px);<br />
+            grid-template-rows: minmax(70px, auto);<br />
+            clamp(80px, 12vw, 120px) max(70px, 8vw);
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-6">
+          <article class="grid-item grid-item-fn">repeat + minmax</article>
+          <article class="grid-item grid-item-fn">repeat + minmax</article>
+          <article class="grid-item grid-item-fn grid-item-fn-wide">fit-content(220px)</article>
+          <article class="grid-item grid-item-fn">minmax(70px, auto)</article>
+          <article class="grid-item grid-item-fn">clamp(80px, 12vw, 120px)</article>
+          <article class="grid-item grid-item-fn">max(70px, 8vw)</article>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">8</span>
+          <h2>Brak zawartości dla zdefiniowanych pojemników</h2>
+          <ul>
+            <li>Rozwiązanie - funkcje auto-fit i auto-fill</li>
+            <li>auto-fill utrzymuje puste kolumny, nawet gdy brak elementów</li>
+            <li>auto-fit zwija puste kolumny i rozszerza istniejące</li>
+          </ul>
+          <code class="code">
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));<br />
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-7">
+          <div class="auto-mode auto-mode-fill">
+            <h3>auto-fill</h3>
+            <div class="auto-grid auto-grid-fill">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+            </div>
+          </div>
+
+          <div class="auto-mode auto-mode-fit">
+            <h3>auto-fit</h3>
+            <div class="auto-grid auto-grid-fit">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
