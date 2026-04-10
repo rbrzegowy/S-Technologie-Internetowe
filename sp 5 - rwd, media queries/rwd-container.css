@@ -1,0 +1,213 @@
+.container-intro {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid rgba(62, 74, 90, 0.12);
+  border-radius: 20px;
+  background: linear-gradient(130deg, rgba(74, 114, 178, 0.12), rgba(198, 255, 221, 0.25));
+}
+
+main header {
+  background: none;
+}
+
+.container-intro p {
+  margin: 12px 0 0;
+  max-width: 75ch;
+  line-height: 1.65;
+}
+
+.example-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.demo-card {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(62, 74, 90, 0.12);
+  background: #fffdfa;
+  box-shadow: 0 10px 28px rgba(62, 74, 90, 0.08);
+}
+
+.demo-card > header {
+  display: grid;
+  gap: 8px;
+}
+
+.step-label {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4a72b2;
+  font-weight: 700;
+}
+
+.demo-card h3,
+.demo-card h4 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: normal;
+}
+
+.demo-card p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.demo-step1-layout {
+  display: grid;
+  gap: 12px;
+}
+
+.demo-step1-layout article,
+.demo-metrics article,
+.demo-quote,
+.demo-nav a,
+.fluid-chip {
+  border-radius: 14px;
+  border: 1px solid rgba(74, 114, 178, 0.18);
+  background: #ffffff;
+}
+
+.demo-step1-layout article,
+.demo-quote {
+  padding: 14px;
+}
+
+.demo-card--step1 {
+  container: step1 / inline-size;
+}
+
+@container step1 (min-width: 24rem) {
+  .demo-step1-layout {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.demo-card--step2 {
+  container: step2 / inline-size;
+}
+
+.demo-quote h4 {
+  font-size: 1.1rem;
+}
+
+@container step2 (min-width: 24rem) {
+  .demo-quote h4 {
+    font-size: 1.75rem;
+  }
+
+  .demo-quote p {
+    font-size: 1.05rem;
+  }
+}
+
+@container step2 (min-width: 24rem) {
+  .demo-quote h4 {
+    font-size: 1.85rem;
+  }
+
+  .demo-quote p {
+    font-size: 1.15rem;
+    max-width: 50ch;
+  }
+}
+
+.demo-card--step3 {
+  container: step3 / inline-size;
+}
+
+.demo-metrics {
+  display: grid;
+  gap: 10px;
+}
+
+.demo-metrics article {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+}
+
+.demo-metrics strong {
+  color: #4a72b2;
+  font-size: 1.35rem;
+}
+
+@container step3 (min-width: 24rem) {
+  .demo-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container step3 (min-width: 24rem) {
+  .demo-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.demo-card--step4 {
+  container: step4 / inline-size;
+}
+
+.demo-nav {
+  display: grid;
+  gap: 10px;
+}
+
+.demo-nav a {
+  padding: 10px 14px;
+  text-align: center;
+}
+
+@container step4 (min-width: 30rem) {
+  .demo-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container step4 (min-width: 48rem) {
+  .demo-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.demo-card--step5 {
+  container: step5 / inline-size;
+}
+
+.demo-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 2cqi, 18px);
+}
+
+.fluid-chip {
+  padding: clamp(8px, 2cqi, 16px) clamp(12px, 3.5cqi, 22px);
+  font-size: clamp(0.85rem, 2.2cqi, 1.1rem);
+}
+
+@container step5 (min-width: 40rem) {
+  .fluid-chip {
+    border-radius: 999px;
+  }
+}
+
+@media (min-width: 760px) {
+  .example-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+@media (min-width: 1160px) {
+  .example-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .demo-card--step5 {
+    grid-column: span 2;
+  }
+}

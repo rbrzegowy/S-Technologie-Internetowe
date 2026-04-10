@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Web Design</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./rwd-container.css" />
+  </head>
+  <body>
+    <body>
+      <header>
+        <h1>Responsive Web Design - @container</h1>
+      </header>
+      <main>
+        <section class="container-intro">
+          <h2>Od @media do @container</h2>
+          <p>Poniższe karty pokazują krok po kroku, jak komponent sam reaguje na własną szerokość, niezależnie od szerokości całego viewportu.</p>
+        </section>
+
+        <section class="example-grid">
+          <section class="demo-card demo-card--step1">
+            <header>
+              <p class="step-label">Krok 1</p>
+              <h3>Podstawowa zmiana układu</h3>
+              <p>Na wąskim kontenerze elementy są jeden pod drugim. Po przekroczeniu progu kontenera treści ustawiają się obok siebie.</p>
+            </header>
+            <div class="demo-step1-layout">
+              <article>
+                <h4>Opis</h4>
+                <p>Tekst bazowy komponentu.</p>
+              </article>
+              <article>
+                <h4>Dane</h4>
+                <p>Krótki podgląd statystyk.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="demo-card demo-card--step2">
+            <header>
+              <p class="step-label">Krok 2</p>
+              <h3>Skalowanie typografii w komponencie</h3>
+              <p>Rozmiar nagłówka i proporcje tekstu zmieniają się lokalnie, zależnie od szerokości karty, a nie od całej strony.</p>
+            </header>
+            <article class="demo-quote">
+              <h4>Container-aware copy</h4>
+              <p>Jeden komponent, kilka wariantów czytelności bez duplikowania klas utility.</p>
+            </article>
+          </section>
+
+          <section class="demo-card demo-card--step3">
+            <header>
+              <p class="step-label">Krok 3</p>
+              <h3>Automatyczna liczba kolumn</h3>
+              <p>Kafelki przechodzą z 1 do 2 i 3 kolumn, gdy sam kontener rośnie. To działa nawet w różnych miejscach layoutu.</p>
+            </header>
+            <div class="demo-metrics">
+              <article><strong>12</strong><span>Zadań</span></article>
+              <article><strong>8</strong><span>Makiet</span></article>
+              <article><strong>5</strong><span>Repozytoriów</span></article>
+              <article><strong>93%</strong><span>Frekwencji</span></article>
+              <article><strong>4</strong><span>Warsztaty</span></article>
+              <article><strong>27</strong><span>Komentarzy</span></article>
+            </div>
+          </section>
+
+          <section class="demo-card demo-card--step4">
+            <header>
+              <p class="step-label">Krok 4</p>
+              <h3>Przełączanie orientacji komponentu</h3>
+              <p>Ten sam moduł listy na małej szerokości jest pionowy, a przy większej staje się poziomym paskiem nawigacji.</p>
+            </header>
+            <nav class="demo-nav" aria-label="Przykładowa nawigacja modułu">
+              <a href="#">Start</a>
+              <a href="#">Materiały</a>
+              <a href="#">Ćwiczenia</a>
+              <a href="#">Kontakt</a>
+            </nav>
+          </section>
+
+          <section class="demo-card demo-card--step5">
+            <header>
+              <p class="step-label">Krok 5</p>
+              <h3>Jednostki kontenerowe (cqi)</h3>
+              <p>Rozmiary odstępów i elementów mogą zależeć od szerokości kontenera dzięki jednostkom opartym o container query.</p>
+            </header>
+            <div class="demo-fluid">
+              <div class="fluid-chip">cqi</div>
+              <div class="fluid-chip">Skalowanie</div>
+              <div class="fluid-chip">Bez viewport</div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </body>
+  </body>
+</html>

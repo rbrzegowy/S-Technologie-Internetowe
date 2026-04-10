@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Web Design</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./rwd-showcase.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Responsive Web Design</h1>
+    </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Media queries</p>
+        <h2>Media queries w CSS - mobile first</h2>
+        <p class="lead">
+          Na smartfonie wszystkie elementy ukladaja sie pionowo. Przy wiekszej szerokosci przechodza do siatki z osobnym panelem bocznym i kartami.
+        </p>
+        <p class="lead">
+          Główny szablon wykorzystuje <i>@media</i> query do zmiany wyglądu.<br />
+          Elementy wewnątrz kart wykorzystują <i>container</i>
+        </p>
+        <div class="hero-actions">
+          <a href="#plan">Zobacz plan dnia</a>
+          <a href="#stats">Przejdz do statystyk</a>
+        </div>
+      </section>
+
+      <section class="showcase-grid">
+        <article class="feature-card feature-card--accent" id="stats">
+          <p class="card-label">Status kursu</p>
+          <h3>128 studentow pracuje na wspolnym projekcie</h3>
+          <p>Kazda karta ma identyczna strukture, ale przy szerszym widoku uklad zmienia proporcje i priorytety wizualne bez zmiany HTML.</p>
+          <ul class="metrics-list">
+            <li>
+              <strong>89%</strong>
+              <span>aktywnych zadan</span>
+            </li>
+            <li>
+              <strong>24</strong>
+              <span>zespoly projektowe</span>
+            </li>
+            <li>
+              <strong>12</strong>
+              <span>oddanych makiet</span>
+            </li>
+          </ul>
+        </article>
+
+        <section class="feature-card" id="plan">
+          <p class="card-label">Plan dnia</p>
+          <h3>Bloki zajec dopasowuja sie do szerokosci ekranu</h3>
+          <div class="agenda-list">
+            <div>
+              <span>09:00</span>
+              <p>Analiza mobilnego interfejsu i priorytety tresci.</p>
+            </div>
+            <div>
+              <span>11:00</span>
+              <p>Budowa siatki przy pomocy Grid i elastycznych komponentow.</p>
+            </div>
+            <div>
+              <span>13:00</span>
+              <p>Media queries dla tabletow, laptopow i szerokich monitorow.</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="sidebar-card">
+          <p class="card-label">Nawigacja</p>
+          <nav class="quick-nav" aria-label="Szybkie linki">
+            <a href="#stats">Statystyki</a>
+            <a href="#plan">Plan</a>
+            <a href="#gallery">Galeria</a>
+            <a href="#tips">Wskazowki</a>
+          </nav>
+
+          <div class="tip-box" id="tips">
+            <h3>Dlaczego mobile-first?</h3>
+            <p>Najpierw projektujesz najtrudniejszy wariant, czyli najmniejszy ekran. Potem tylko rozszerzasz mozliwosci interfejsu.</p>
+          </div>
+        </aside>
+
+        <section class="gallery-card" id="gallery">
+          <div class="gallery-copy">
+            <p class="card-label">Przyklady modulow</p>
+            <h3>Ta sekcja zmienia sie z kolumny w mozaike</h3>
+            <p>Na telefonie elementy sa czytane jeden po drugim. Na desktopie obrazy i opis zaczynaja wspolpracowac jak magazynowy layout.</p>
+          </div>
+          <div class="gallery-grid" aria-label="Przykladowe kafelki projektu">
+            <article>
+              <span>01</span>
+              <h4>Landing page</h4>
+            </article>
+            <article>
+              <span>02</span>
+              <h4>Karta produktu</h4>
+            </article>
+            <article>
+              <span>03</span>
+              <h4>Panel kursanta</h4>
+            </article>
+            <article>
+              <span>04</span>
+              <h4>Widok raportu</h4>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

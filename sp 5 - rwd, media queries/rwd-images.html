@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Web Design</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./rwd-images.css" />
+  </head>
+  <body>
+    <body>
+      <header>
+        <h1>Responsive Web Design - grafiki</h1>
+      </header>
+      <main>
+        <section class="card">
+          <h2>Element &lt;img&gt;</h2>
+          <!-- element img -->
+          <img src="./assets/img/mountains6.jpg" alt="góry" />
+        </section>
+        <section class="card">
+          <h2>Element &lt;img&gt; z srcset</h2>
+          <!-- prettier-ignore -->
+          <img
+            srcset="
+              ./assets/img/mountains5-400.jpg 400w,
+              ./assets/img/mountains5-800.jpg 800w,
+              ./assets/img/mountains5.jpg 1200w"
+            sizes="
+              (max-width: 600px) 300px,
+              (max-width: 800px) 700px,
+              1100px"
+            alt="góry"
+          />
+        </section>
+
+        <section class="card">
+          <h2>Element &lt;picture&gt; - różne formaty pliku</h2>
+          <!-- element picture - pozwala na różne źródła/formaty obrazka -->
+          <!-- formaty -->
+          <picture>
+            <source srcset="./assets/img/mountains4.jxl" type="image/jxl" />
+            <source srcset="./assets/img/mountains4.avif" type="image/avif" />
+            <source srcset="./assets/img/mountains4.webp" type="image/webp" />
+            <img src="./assets/img/mountains4.jpg" alt="Góry" />
+          </picture>
+        </section>
+
+        <section class="card">
+          <h2>Element &lt;picture&gt; - media queries na szerokość ekranu</h2>
+          <!-- media queries -->
+          <!-- w odróżnieniu od srcset i sizes - tu szerokość img zależy od pliku -->
+          <picture>
+            <source media="(max-width: 400px)" srcset="./assets/img/mountains3-400.jpg" />
+            <source media="(max-width: 800px)" srcset="./assets/img/mountains3-800.jpg" />
+            <img src="./assets/img/mountains3.jpg" alt="obrazek fallback" />
+          </picture>
+        </section>
+
+        <section class="card">
+          <h2>Element &lt;picture&gt; - media queries na orientację ekranu</h2>
+          <!-- media - orientacja ekranu -->
+          <picture>
+            <source media="(orientation: portrait)" srcset="./assets/img/mountains7-portrait.jpg" />
+            <source media="(orientation: landscape)" srcset="./assets/img/mountains7.jpg" />
+            <img src="./assets/img/mountains7.jpg" alt="obrazek fallback" />
+          </picture>
+        </section>
+      </main>
+    </body>
+  </body>
+</html>
