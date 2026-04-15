@@ -93,8 +93,10 @@
             <li>Skróty do justify- i align-: place-content, place-items, place-self</li>
           </ul>
           <code class="code">
-            justify-items: end; align-items: center;<br />
-            justify-content: space-evenly; align-content: space-evenly;
+            justify-items: end; <br />
+            align-items: center;<br />
+            justify-content: space-evenly; <br />
+            align-content: space-evenly;
           </code>
         </div>
         <div class="demo-grid demo-grid-step-align">
@@ -141,9 +143,18 @@
             <li>Warstwy kontrolujemy przez z-index</li>
           </ul>
           <code class="code">
-            grid-template-columns: [full-start] 1fr [content-start] 1fr [center-start] 1fr [content-end] 1fr [aside-start] 1fr [aside-end] 1fr [full-end];<br />
-            .a { grid-column: full-start / content-end; grid-row: top / lower; }<br />
-            .b { grid-column: center-start / aside-end; grid-row: middle / bottom; z-index: 2; }<br />
+            grid-template-columns: <br />
+            [full-start] 1fr <br />
+            [content-start] 1fr <br />
+            [center-start] 1fr <br />
+            [content-end] 1fr <br />
+            [aside-start] 1fr <br />
+            [aside-end] 1fr <br />
+            [full-end];<br />
+            .a { grid-column: full-start / content-end; <br />
+            grid-row: top / lower; }<br />
+            .b { grid-column: center-start / aside-end; <br />
+            grid-row: middle / bottom; z-index: 2; }<br />
             .d { justify-self: end; align-self: start; }
           </code>
         </div>
@@ -213,6 +224,49 @@
               <div class="grid-item">3</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">9</span>
+          <h2>Subgrid - wyrównanie zagnieżdżonych siatek</h2>
+          <ul>
+            <li>Dziecko w gridzie może być również gridem</li>
+            <li>
+              Bramka nr 1 - grid niezależny od rodzica<br />
+              Bramka nr 2 - dziecko dziedziczy ustawienia grid rodzica
+            </li>
+            <li>
+              Usecases: wyrównanie elementów wewnątrz subgrid. W przykładzie - komórka z opisiem nie musi mieć z góry zadanej wysokości, dostosuje się do
+              najdłuższego tekstu
+            </li>
+          </ul>
+          <code class="code">
+            .card { display: grid; <br />
+            grid-row: span 4; <br />
+            grid-template-rows: subgrid; }<br />
+          </code>
+        </div>
+        <div class="demo-grid demo-grid-step-8">
+          <section class="card card-1">
+            <div class="card-image card-image-1"></div>
+            <h3>Widget 1</h3>
+            <p>Jakaś długa treść rozciągająca komórkę w pionie. Bez subgrida przyciski poniżej nie będą wyrównane w poziomie</p>
+            <button>Add to Cart</button>
+          </section>
+          <section class="card card-2">
+            <div class="card-image card-image-2"></div>
+            <h3>Widget 2</h3>
+            <p>Krótki opis</p>
+            <button>Add to Cart</button>
+          </section>
+          <section class="card card-3">
+            <div class="card-image card-image-3"></div>
+            <h3>Widget 3</h3>
+            <p>Krótki opis</p>
+            <button>Add to Cart</button>
+          </section>
         </div>
       </section>
     </main>

@@ -262,6 +262,75 @@ code {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
+.demo-grid-step-8 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+
+.card {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  padding: 16px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  gap: 12px;
+}
+
+.card-image {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  display: block;
+}
+
+.card-image-1 {
+  background: linear-gradient(135deg, #f37b57, #e33e3e);
+}
+
+.card-image-2 {
+  background: linear-gradient(135deg, #37586d, #5e94a8);
+}
+
+.card-image-3 {
+  background: linear-gradient(135deg, #2f744d, #4fb37d);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #284255;
+  line-height: 1.3;
+}
+
+.card p {
+  margin: 0;
+  font-size: 13px;
+  color: #686868;
+  line-height: 1.5;
+  align-self: center;
+}
+
+.card button {
+  margin: 0;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #d95f41;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.card button:hover {
+  background: #9d3b24;
+}
+
 /* @media (max-width: 900px) {
   .grid-step {
     grid-template-columns: 1fr;
