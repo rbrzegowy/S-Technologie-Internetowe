@@ -228,3 +228,99 @@
     padding: 32px;
   }
 }
+
+/* ustawienia wydruku */
+@page {
+  size: A4 portrait;
+  margin: 12mm;
+}
+
+@media print {
+  html,
+  body {
+    background: none !important;
+    color: #111 !important;
+  }
+
+  header,
+  main,
+  .hero,
+  .feature-card,
+  .sidebar-card,
+  .gallery-card,
+  .tip-box,
+  .metrics-list li,
+  .agenda-list div,
+  .gallery-grid article {
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  main {
+    margin: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    display: block;
+    border-radius: 0;
+  }
+
+  .hero {
+    border: 1px solid #999;
+    margin-bottom: 6mm;
+    page-break-inside: avoid;
+  }
+
+  .hero-actions,
+  .quick-nav {
+    display: none !important;
+  }
+
+  .showcase-grid,
+  .gallery-card,
+  .gallery-grid,
+  .metrics-list,
+  .agenda-list {
+    display: block !important;
+  }
+
+  .feature-card,
+  .sidebar-card,
+  .gallery-card {
+    border: 1px solid #aaa;
+    border-radius: 0;
+    padding: 5mm;
+    margin: 0 0 6mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .metrics-list li,
+  .agenda-list div,
+  .gallery-grid article {
+    border: 1px solid #bbb;
+    border-radius: 0;
+    margin-bottom: 3mm;
+    padding: 3mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .gallery-grid article {
+    min-height: auto;
+  }
+
+  .card-label {
+    color: #333 !important;
+  }
+
+  a,
+  a:visited {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+
+  #wydruk {
+    border: 2px solid #444;
+  }
+}
