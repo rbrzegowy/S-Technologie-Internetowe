@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="zmienne.css" />
+    <title>Zmienne w CSS</title>
+  </head>
+  <body>
+    <header>
+      <h1>Zmienne w CSS</h1>
+    </header>
+    <main>
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">1</span>
+          <h2>Podstawy zmiennych</h2>
+          <ul>
+            <li>Zmienne zawsze definiujemy w jakimeś kontekście</li>
+            <li>Najczęstszy "first choice" - globalnie w selektorze :root (html)</li>
+            <li>Zmienne z :root są dostępne w całym drzewie CSS</li>
+            <li>Zmienne mogą przechowywać pojedyncze wartości lub całe wyrażenia (np. dla box-shadow)</li>
+            <li>Definiowanie zmiennej: --nazwa-zmiennej: wartość</li>
+            <li>Używanie: var(--nazwa-zmiennej, fallback)</li>
+          </ul>
+          <code>
+            :root { <br />
+            --accent: #ec5a2f; <br />
+            --space: 1rem; <br />
+            --shadow-pop: 0 22px 44px rgba(34, 48, 71, 0.18); <br />
+            }<br />
+            .card { <br />
+            padding: var(--space); <br />
+            }
+          </code>
+        </div>
+        <div class="demo-panel demo-tokens">
+          <article class="token-card">
+            <p class="token-label">Kolor akcentu</p>
+            <strong>var(--accent)</strong>
+          </article>
+          <article class="token-card token-card--alt">
+            <p class="token-label">Odstęp modułu</p>
+            <strong>var(--space-lg)</strong>
+          </article>
+          <article class="token-card token-card--soft">
+            <p class="token-label">Promień rogu</p>
+            <strong>var(--radius-xl)</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">2</span>
+          <h2>Nadpisywanie i lokalny scope zmiennych</h2>
+          <ul>
+            <li>Można deklarować zmienne lokalnie - idea komponentu</li>
+            <li>Możliwe jest nadpisywanie zmiennych globalnych lokalnie</li>
+            <li>Przykładowe scenariusze: komponenty, różne warianty elementu, nadpisywanie wartości w @media</li>
+          </ul>
+          <code>
+            .card--success { <br />
+            --card-accent: #2f744d; <br />
+            } <br />
+            .card { <br />
+            border-color: var(--card-accent); <br />
+            }
+          </code>
+        </div>
+        <div class="demo-panel demo-scope">
+          <article class="scope-card">
+            <p class="token-label">Domyślna karta</p>
+            <h3>Ten sam komponent</h3>
+            <p>Korzysta z domyślnej zmiennej komponentu.</p>
+          </article>
+          <article class="scope-card scope-card--cool">
+            <p class="token-label">Nadpisany scope</p>
+            <h3>Inny akcent</h3>
+            <p>Zmiana tylko jednej zmiennej daje nowy wygląd.</p>
+          </article>
+          <article class="scope-card scope-card--mint">
+            <p class="token-label">Jeszcze jeden wariant</p>
+            <h3>Bez nowej klasy bazowej</h3>
+            <p>Ta sama struktura, inne wartości lokalne.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">3</span>
+          <h2>Fallback w var()</h2>
+          <ul>
+            <li>Jeśli zmienna nie istnieje, można podać wartość domyślną</li>
+            <li>Składnia: <code>var(--nazwa, fallback)</code></li>
+            <li>Fallback może być również zmienną: <code>var(--fallback, var(--def-value))</code></li>
+          </ul>
+          <code>
+            color: <br />
+            var(--badge-ink, #223047); <br />
+            background: var(--badge-bg, #ffe7dd);
+          </code>
+        </div>
+        <div class="demo-panel demo-fallback">
+          <div class="fallback-chip">Fallback</div>
+          <div class="fallback-chip fallback-chip--custom">Własna wartość</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">4</span>
+          <h2>Przełączanie motywu ciemny/jasny</h2>
+          <ul>
+            <li>W :root definiujemy zmienne dla domyślnego trybu</li>
+            <li>Zmienne są nadpisywane w selektorze definiującym tryb (np. .dark lub [data-theme]="dark")To podstawa dla motywów, trybu ciemnego i wersji brandowych</li>
+            <li>Zmienne świetnie pracują z funkcją <i>light-dark()</i></li>
+            <li>...oraz @media (prefers-color-scheme: dark/light)</i></li>
+          </ul>
+          <code>.theme-panel[data-theme='dark'] { <br />
+            --surface: #1d2737; <br />
+            --ink-local: #f3f7ff; }</code>
+        </div>
+        <div class="demo-panel demo-theme-switch">
+          <section class="theme-panel" data-theme="day">
+            <p class="token-label">Tryb dzienny</p>
+            <h3>Surface / ink / accent</h3>
+            <p>Komponent pobiera wszystkie kolory ze zmiennych lokalnych.</p>
+          </section>
+          <section class="theme-panel" data-theme="dark">
+            <p class="token-label">Tryb nocny</p>
+            <h3>Te same style, inne tokeny</h3>
+            <p>Zmiana wartości daje nowy kontrast i atmosferę.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">5</span>
+          <h2>Zmienne jako baza biblioteki/motywu CSS</h2>
+          <ul>
+            <li>Najlepiej traktować je jak mały design system</li>
+            <li>Osobno trzymaj kolory, spacing, typography i elevation</li>
+            <li>Wtedy łatwo skalować projekt i utrzymać spójność</li>
+          </ul>
+          <code>box-shadow: var(--shadow-soft); <br/>
+            gap: var(--space-md); <br />
+            border-radius: var(--radius-lg);</code>
+        </div>
+        <div class="demo-panel demo-system">
+          <div class="system-stack">
+            <div class="system-row">
+              <span>Kolory</span>
+              <span>--accent, --surface, --ink</span>
+            </div>
+            <div class="system-row">
+              <span>Spacing</span>
+              <span>--space-xs, --space-md, --space-xl</span>
+            </div>
+            <div class="system-row">
+              <span>Promienie</span>
+              <span>--radius-sm, --radius-lg, --radius-xl</span>
+            </div>
+            <div class="system-row">
+              <span>Cienie</span>
+              <span>--shadow-soft, --shadow-pop</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">6</span>
+          <h2>Budowanie motywu kolorystycznego</h2>
+          <ul>
+            <li>Zacznij od 2-4 kolorów bazowych, np.: primary, secondary, accent, warning, danger, surface, ink,</li>
+            <li>Następnie dodaj odcienie i tła do kolorów bazowych</li>
+            <li>Jeden bazowy zestaw zmiennych staje się podstawą do kolejnych motywów</li>
+          </ul>
+          <code>
+            :root { <br />
+            --surface: #fff8f1; <br/>
+            --ink: #223047; <br/>
+            --accent: #ec5a2f; <br />
+            --accent-soft: color-mix(in srgb, var(--accent) 20%, white); <br />
+            }<br/>
+            .theme-green {<br/>
+              --surface: #f0f8f4;<br/>
+              --ink-local: #1a3d2d;<br/>
+              --accent: #17906f;<br/>
+            }
+          </code>
+        </div>
+        <div class="demo-panel demo-theme-builder">
+          <section class="palette-board">
+            <div class="palette-swatch palette-surface">surface</div>
+            <div class="palette-swatch palette-ink">ink</div>
+            <div class="palette-swatch palette-accent">accent</div>
+            <div class="palette-swatch palette-accent-soft">accent-soft</div>
+          </section>
+          <article class="theme-preview-card">
+            <p class="token-label">Motyw 1: Ciepły</p>
+            <h3>Pomarańczowe akcenty</h3>
+            <p>Przycisk, obramowanie i tło pochodzą z tych samych zmiennych kolorystycznych.</p>
+            <button type="button">Akcja</button>
+          </article>
+          <article class="theme-preview-card theme-green">
+            <p class="token-label">Motyw 2: Cool</p>
+            <h3>Zielone akcenty</h3>
+            <p>Ten sam HTML, zmieniłem tylko 3 zmienne i uzyskałem nowy visual.</p>
+            <button type="button">Zatwierdzić</button>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

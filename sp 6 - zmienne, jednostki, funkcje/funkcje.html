@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="funkcje.css" />
+    <title>Funkcje w CSS</title>
+  </head>
+  <body>
+    <header>
+      <h1>Funkcje w CSS</h1>
+    </header>
+    <main>
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">1</span>
+          <h2>Kolory i gradienty</h2>
+          <ul>
+            <li><code>color-mix()</code> miesza dwa kolory w zadanej proporcji</li>
+            <li><code>linear-gradient()</code> i <code>conic-gradient()</code> tworzą tła i akcenty</li>
+            <li><code>from()</code> z <code>calc()</code> pozwala tworzyć nowe odcienie na bazie koloru źródłowego</li>
+          </ul>
+          <code>
+            background: color-mix(in srgb, oklch(62% 0.18 260) 65%, white);<br />
+            background: linear-gradient(135deg, #f56b45, #2d7ff9);<br />
+            background: linear-gradient(135deg, oklch(from #4f7cff calc(l + 0.1) c h), oklch(from #4f7cff calc(l - 0.08) c h));
+          </code>
+        </div>
+        <div class="demo-panel demo-color-functions">
+          <div class="color-chip chip-mix-1">color-mix() 70/30</div>
+          <div class="color-chip chip-mix-2">linear-gradient()</div>
+          <div class="gradient-card">from() + calc()</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">2</span>
+          <h2>Funkcje stosowane w filter()</h2>
+          <ul>
+            <li><code>blur()</code> rozmywa element</li>
+            <li><code>brightness()</code>, <code>contrast()</code>, <code>saturate()</code> - zmiana jasności, kontrastu i nasycenia</li>
+            <li><code>hue-rotate()</code> i <code>drop-shadow()</code> - zmiana odcienia i dodanie cienia</li>
+          </ul>
+          <code>
+            filter: blur(2px) saturate(1.2);<br />
+            filter: brightness(1.2) contrast(1.25);<br />
+            filter: hue-rotate(35deg) drop-shadow(0 8px 18px rgba(46, 91, 255, 0.35));
+          </code>
+        </div>
+        <div class="demo-panel demo-filter-functions">
+          <div class="filter-card filter-blur">blur() + saturate()</div>
+          <div class="filter-card filter-contrast">brightness() + contrast()</div>
+          <div class="filter-card filter-hue">hue-rotate() + drop-shadow()</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">3</span>
+          <h2>Rozmiary i ograniczenia</h2>
+          <ul>
+            <li><code>min()</code> bierze mniejszą z podanych wartości</li>
+            <li><code>max()</code> pilnuje minimalnego progu rozmiaru</li>
+            <li><code>clamp()</code> trzyma wartość pomiędzy min i max</li>
+            <li><code>minmax()</code> definiuje zakres rozmiaru (np. dla kolumn i kart)</li>
+          </ul>
+          <code>
+            width: min(68ch, 100%);<br />
+            font-size: clamp(1rem, 0.85rem + 1.2vw, 1.8rem);<br />
+            padding: max(0.75rem, 2vw);<br />
+            grid-template-columns: minmax(180px, 320px);
+          </code>
+        </div>
+        <div class="demo-panel demo-size-functions">
+          <article class="size-card size-card-min">width: min(68ch, 100%)</article>
+          <article class="size-card size-card-clamp">font-size: clamp(...)</article>
+          <article class="size-card size-card-max">padding: max(0.75rem, 2vw)</article>
+          <article class="size-card size-card-minmax">minmax(180px, 320px)</article>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">4</span>
+          <h2>Praktyczne użycie url()</h2>
+          <ul>
+            <li><code>url()</code> wczytuje grafikę jako tło, maskę lub ikonę</li>
+            <li><code>url()</code> w <code>@font-face</code> ładuje plik fontu</li>
+            <li>
+              Ładowanie zasobów zewnętrznych można też zrealizować w html za pomocą link:
+              <br />
+              <code>&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant" rel="stylesheet"&gt;</code>
+            </li>
+          </ul>
+          <code>
+            background-image: url('./assets/noise.png');<br />
+            @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap');<br />
+            .font-tile { font-family: 'Cormorant Garamond', Georgia, serif; }
+          </code>
+        </div>
+        <div class="demo-panel demo-practical-functions">
+          <div class="url-tile">url() dla grafiki tła</div>
+          <div class="font-tile">url() dla fontu (@font-face)</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">5</span>
+          <h2>attr() - style na bazie atrybutu</h2>
+          <ul>
+            <li><code>attr()</code> może pobierać wartości z atrybutów elementu</li>
+            <li>Pełne wsparcie rynku dla attr() - właściwość content</li>
+            <li>Uwaga na wsparcie attr() w pozostałych właściwościach css (np. color: attr())</li>
+          </ul>
+          <code>
+            font-size: attr(data-size rem, 1rem);<br />
+            color: attr(data-color color, #2a3f58);<br />
+            transform: skewX(attr(data-rotation deg, 0deg));
+          </code>
+        </div>
+        <div class="demo-panel demo-attr-functions">
+          <div class="attr-item" data-size="0.95" data-color="#335c9a" data-rotation="0">Atrybut: spokojny</div>
+          <div class="attr-item" data-size="1.2" data-color="#1f7a56" data-rotation="-5">Atrybut: dynamiczny</div>
+          <div class="attr-item" data-size="1.35" data-color="#9b3f2c" data-rotation="7">Atrybut: akcent</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">6</span>
+          <h2>Siatka i układ</h2>
+          <ul>
+            <li><code>repeat()</code> upraszcza definicję kolumn i wierszy</li>
+            <li><code>minmax()</code> daje elastyczne granice dla tracków</li>
+            <li><code>fit-content()</code> ogranicza szerokość kolumny do sensownego maksimum</li>
+          </ul>
+          <code>grid-template-columns: repeat(3, minmax(120px, 1fr)) fit-content(220px);</code>
+        </div>
+        <div class="demo-panel demo-layout-functions">
+          <div class="layout-grid">
+            <div class="layout-item">1fr</div>
+            <div class="layout-item">1fr</div>
+            <div class="layout-item">1fr</div>
+            <div class="layout-item layout-fit">fit-content(220px)</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

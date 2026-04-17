@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap');
+
+:root {
+  --ink: #223047;
+  --muted: #4f5f77;
+  --accent: #ec5a2f;
+  --accent-soft: #ffe1d2;
+  --panel: #ffffffd6;
+  --dash: #d7a77b;
+}
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  color: var(--ink);
+}
+
+header h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 3.3rem);
+  color: #25344f;
+}
+
+main {
+  width: min(1200px, calc(100% - 40px));
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 24px;
+}
+
+.grid-step {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--panel);
+  border: 1px solid #fff;
+  box-shadow: 0 16px 38px rgba(34, 48, 71, 0.12);
+}
+
+.step-number {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #9c3f1f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.step-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.step-copy h2 {
+  margin: 0 0 10px;
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+}
+
+.step-copy ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.step-copy li {
+  margin-bottom: 6px;
+}
+
+code {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #1e3044;
+  color: #f6f9ff;
+  font-size: 13px;
+  line-height: 1.5;
+}
+li code {
+  padding: 6px 9px;
+  border-radius: 10px;
+  background: #46596f;
+  color: #f6f9ff;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.demo-panel {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  min-height: 170px;
+  border: 2px dashed var(--dash);
+  border-radius: 22px;
+  background: linear-gradient(150deg, #ffffffcf, #fff4e5);
+}
+
+.demo-color-functions {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.color-chip,
+.gradient-card {
+  min-height: 84px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+}
+
+.chip-mix-1 {
+  background: color-mix(in srgb, oklch(62% 0.18 260) 70%, white);
+}
+
+.chip-mix-2 {
+  background: linear-gradient(135deg, #f56b45, #2d7ff9);
+}
+
+.gradient-card {
+  background-image: linear-gradient(135deg, oklch(from #4f7cff calc(l + 0.1) c h), oklch(from #4f7cff calc(l - 0.08) c h));
+}
+
+.demo-filter-functions {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.filter-card {
+  min-height: 96px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #4f7cff, #31c3a0);
+}
+
+.filter-blur {
+  filter: blur(0.8px) saturate(1.25);
+}
+
+.filter-contrast {
+  filter: brightness(1.2) contrast(1.25);
+}
+
+.filter-hue {
+  filter: hue-rotate(35deg) drop-shadow(0 8px 18px rgba(46, 91, 255, 0.35));
+}
+
+.demo-size-functions {
+  align-content: start;
+}
+
+.size-card {
+  border-radius: 14px;
+  min-height: 62px;
+  display: grid;
+  align-items: center;
+  padding: max(0.75rem, 2vw);
+  border: 1px solid #cfdae9;
+  background: #fff;
+  color: #24364d;
+  font-weight: 700;
+}
+
+.size-card-min {
+  width: min(68ch, 100%);
+}
+
+.size-card-clamp {
+  font-size: clamp(1rem, 0.85rem + 1.2vw, 1.8rem);
+  color: #31517a;
+}
+
+.size-card-max {
+  padding: max(0.75rem, 2vw);
+}
+
+.size-card-minmax {
+  width: minmax(180px, 320px);
+  background: linear-gradient(135deg, #eef6ff, #f3fbf9);
+  color: #2b4a67;
+}
+
+.demo-layout-functions {
+  align-content: center;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr)) fit-content(220px);
+  gap: 10px;
+}
+
+.layout-item {
+  min-height: 68px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #4b6fb8, #7f95d7);
+  color: #fff;
+  font-weight: 700;
+}
+
+.layout-fit {
+  background: linear-gradient(135deg, #2f7657, #49b185);
+}
+
+.demo-practical-functions {
+  align-content: start;
+}
+
+.url-tile,
+.font-tile {
+  min-height: 62px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.url-tile {
+  border: 1px solid #d7dce5;
+  color: #ccd5de;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)), url('assets/mountains1.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.font-tile {
+  border: 1px solid #ccd8ec;
+  color: #2a3f58;
+  background: #eef4ff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+}
+
+.demo-attr-functions {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.attr-item {
+  min-height: 84px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #cfdae9;
+  background: #fff;
+  font-weight: 700;
+
+  /* fallback values */
+  font-size: 1rem;
+  color: #2a3f58;
+  transform: rotate(0deg);
+
+  /* modern typed attr() */
+  font-size: attr(data-size rem, 1rem);
+  color: attr(data-color color, #2a3f58);
+  transform: rotate(attr(data-rotation deg, 0deg));
+}
+
+.attr-item::after {
+  content: 'size=' attr(data-size) ' | rotation=' attr(data-rotation) 'deg';
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+@media (max-width: 920px) {
+  .grid-step {
+    grid-template-columns: 1fr;
+  }
+
+  .layout-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}

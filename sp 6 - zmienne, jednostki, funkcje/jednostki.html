@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="jednostki.css" />
+    <title>Jednostki CSS</title>
+  </head>
+  <body>
+    <header>
+      <h1>Jednostki CSS</h1>
+    </header>
+    <main>
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">1</span>
+          <h2>Jednostki bezwzględne</h2>
+          <ul>
+            <li>Najczęściej używana: px (piksele CSS)</li>
+            <li>Do druku przydają się też pt, cm, mm, in</li>
+            <li>Bezwzględne wartości są przewidywalne, ale mniej elastyczne</li>
+          </ul>
+          <code>
+            width: 220px; <br />
+            font-size: 18pt; <br />
+            margin-top: 1cm;</code
+          >
+        </div>
+        <div class="demo-panel demo-absolute">
+          <div class="unit-box unit-px">220px</div>
+          <div class="unit-box unit-pt">18pt</div>
+          <div class="unit-box unit-cm">1cm</div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">2</span>
+          <h2>Wielkość tekstu</h2>
+          <ul>
+            <li>rem to mnożnik rozmiaru fontu na elemencie html</li>
+            <li>em to mnożnik rozmiaru fontu rodzica</li>
+            <li>% przy font-size to procent wartości rodzica</li>
+          </ul>
+          <code
+            >html { font-size: 16px; } <br />
+            .lead { font-size: 1.25rem; }</code
+          >
+        </div>
+        <div class="demo-panel demo-font-scale">
+          <p class="font-rem">To jest 1.25rem</p>
+          <div class="font-parent">
+            Rodzic 20px
+            <p class="font-em">To jest 1.5em (30px)</p>
+          </div>
+          <p class="font-percent">To jest 125%</p>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">3</span>
+          <h2>Jednostki względne i viewport</h2>
+          <ul>
+            <li>% odnosi się do wymiaru rodzica</li>
+            <li>ch bazuje na szerokości znaku "0" - fajne do definiowania/ograniczania szerokości kolumny tekstu</li>
+            <li>vw i vh liczą się od szerokości i wysokości okna przeglądarki</li>
+            <li>vmin to mniejszy wymiar okna, a vmax większy</li>
+          </ul>
+          <code>
+            .card { width: 50%; } <br />
+            .copy { max-width: 60ch; } <br />
+            .hero { width: 18vw; height: 32vh; border-radius: 6vmin; }
+          </code>
+        </div>
+        <div class="demo-stack">
+          <div class="demo-panel demo-relative-boxes">
+            <div class="relative-track">
+              <div class="relative-half">50%</div>
+              <div class="relative-ch">60ch</div>
+            </div>
+          </div>
+          <div class="demo-panel demo-viewport">
+            <div class="vp-block vp-vh">32vh</div>
+            <div class="vp-block vp-vw">18vw</div>
+            <div class="vp-chip">6vmin / 4vmax</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">4</span>
+          <h2>Kolory i przezroczystość</h2>
+          <ul>
+            <li>Najczęściej - hex lub rgb</li>
+            <li>hsl wygodnie zmienia odcień i nasycenie</li>
+            <li>oklch daje bardziej przewidywalną percepcję koloru - zobacz zmianę jasności w porównaniu z hsl</li>
+            <li>Przezroczystość - kanał alpha lub właściwością opacity</li>
+            <li>
+              Świetne wyjaśnienie różnic:
+              <a target="_blank" href="https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl"
+                >evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
+              </a>
+            </li>
+          </ul>
+          <code>background: rgb(82 109 255 / 0.45); background: hsl(168 55% 42% / 0.7); opacity: 0.5;</code>
+        </div>
+        <div class="demo-panel demo-colors">
+          <div class="swatch swatch-hex">#FF6B6B</div>
+          <div class="swatch swatch-rgb">rgb(82 109 255)</div>
+          <div class="swatch swatch-rgba">rgba(82 109 255 / 0.55)</div>
+          <div class="swatch swatch-hsl">hsl(168 55% 42% / 0.7)</div>
+          <div class="swatch swatch-oklch">oklch(72% 0.17 45)</div>
+          <div class="color-compare">
+            <section class="compare-family">
+              <p class="compare-label">HSL</p>
+              <div class="compare-buttons">
+                <button type="button" class="compare-button compare-button-hsl-1">Akcja</button>
+                <button type="button" class="compare-button compare-button-hsl-2">Akcja</button>
+                <button type="button" class="compare-button compare-button-hsl-3">Akcja</button>
+              </div>
+              <div class="compare-stripes">
+                <span class="stripe stripe-hsl-1"></span>
+                <span class="stripe stripe-hsl-2"></span>
+                <span class="stripe stripe-hsl-3"></span>
+              </div>
+            </section>
+            <section class="compare-family">
+              <p class="compare-label">OKLCH</p>
+              <div class="compare-buttons">
+                <button type="button" class="compare-button compare-button-oklch-1">Akcja</button>
+                <button type="button" class="compare-button compare-button-oklch-2">Akcja</button>
+                <button type="button" class="compare-button compare-button-oklch-3">Akcja</button>
+              </div>
+              <div class="compare-stripes">
+                <span class="stripe stripe-oklch-1"></span>
+                <span class="stripe stripe-oklch-2"></span>
+                <span class="stripe stripe-oklch-3"></span>
+              </div>
+            </section>
+          </div>
+          <div class="alpha-zone">
+            <p class="alpha-label">Kanał alpha (ten sam kolor, różna przezroczystość)</p>
+            <div class="alpha-samples">
+              <div class="alpha-sample alpha-100">1.0</div>
+              <div class="alpha-sample alpha-75">0.75</div>
+              <div class="alpha-sample alpha-50">0.5</div>
+              <div class="alpha-sample alpha-25">0.25</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
