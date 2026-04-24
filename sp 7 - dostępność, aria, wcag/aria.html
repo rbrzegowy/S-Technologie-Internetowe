@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="aria.css" />
+    <title>Accessibility i ARIA - szkolenie</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Przejdź do treści głównej</a>
+
+    <header>
+      <div class="hero-headline">
+        <h1>Accessibility i ARIA</h1>
+      </div>
+      <nav aria-label="Nawigacja po sekcjach" class="hero-nav">
+        <a href="#dlaczego">Dlaczego to ważne</a>
+        <a href="#wcag">WCAG</a>
+        <a href="#aria">Pierwsza zasada ARIA</a>
+        <a href="#focus">Klawiatura i focus</a>
+        <a href="#audyt">Szybki audyt</a>
+        <button id="contrastToggleBtn" type="button" class="contrast-toggle" aria-pressed="false">Wysoki kontrast</button>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section class="grid-step" id="dlaczego">
+        <div class="step-copy">
+          <span class="step-number">1</span>
+          <h2>But who cares?</h2>
+          <ul>
+            <li>
+              Mit "niewidomego użytkownika". dostępność to też osoby starsze, osoby po urazach, użytkownicy mobilni w pełnym słońcu i każdy, kto chwilowo ma
+              ograniczenia.
+            </li>
+            <li>Prawo i biznes: Europejski Akt o Dostępności (EAA) to realne wymagania, ryzyko kar i kosztownego przepisywania produktów po czasie.</li>
+            <li>PL - sektor publiczny podlega pod WCAG 2.1 poziom AA.</li>
+            <li>Dostępność poprawia UX całościowo: lepsza czytelność, prostsza nawigacja, mniej porzuconych procesów i wyższa konwersja.</li>
+            <li>Zasada POUR to fundament: Postrzegalność, Funkcjonalność, Zrozumiałość, Kompatybilność.</li>
+          </ul>
+        </div>
+        <div class="demo-panel demo-why">
+          <article class="persona-card">
+            <p class="token-label">Sytuacja życiowa</p>
+            <h3>Złamana ręka</h3>
+            <p>Myszka odpada. Klawiatura i logiczny focus stają się krytyczne.</p>
+          </article>
+          <article class="persona-card">
+            <p class="token-label">Kontekst</p>
+            <h3>Pełne słońce</h3>
+            <p>Słaby kontrast oznacza, że formularz jest praktycznie niewidoczny.</p>
+          </article>
+          <article class="persona-card">
+            <p class="token-label">Skala</p>
+            <h3>Seniorzy i low vision</h3>
+            <p>Większe fonty, przejrzyste nagłówki i czytelne CTA to podstawa.</p>
+          </article>
+          <div class="pour-grid" aria-label="Zasada POUR">
+            <div>
+              <strong>P</strong>
+              <span>Perceivable - Postrzegalność</span>
+              <p>Czy film ma napisy i audiodeskrypcję dla osoby niewidomej lub niesłyszącej?</p>
+            </div>
+            <div>
+              <strong>O</strong>
+              <span>Operable - Funkcjonalność</span>
+              <p>Czy cały formularz da się przejść samą klawiaturą, bez użycia myszki?</p>
+            </div>
+            <div>
+              <strong>U</strong>
+              <span>Understandable - Zrozumiałość</span>
+              <p>Czy komunikat błędu jasno mówi co jest źle i jak to poprawić?</p>
+            </div>
+            <div>
+              <strong>R</strong>
+              <span>Robust - Kompatybilność</span>
+              <p>Czy strona/aplikacja działa poprawnie na czytniku ekranu i różnych przeglądarkach?</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-step" id="wcag">
+        <div class="step-copy">
+          <span class="step-number">2</span>
+          <h2>WCAG w pigułce - najważniejsze kryteria</h2>
+          <ul>
+            <li>
+              Trzy poziomy zgodności: <strong>A</strong> (minimum), <strong>AA</strong> (standard branżowy i wymóg prawny) oraz <strong>AAA</strong> (najwyższy,
+              trudny do spełnienia w całości).
+            </li>
+            <li>Większość regulacji (EAA, WCAG 2.1) wymaga poziomu AA.</li>
+            <li>Kontrast tekstu: minimum w 4.5:1 dla zwykłego tekstu (AA) lub 7:1 (AAA).</li>
+            <li>Nie polegaj tylko na kolorze: błąd formularza musi mieć też opis lub ikonę.</li>
+            <li>
+              Alt dla obrazów: opisuj obrazki merytoryczne, dekoracyjne zostaw jako alt="". Pisz nie tylko że na obrazku jest wykres, napisz co wynika z
+              wykresu.
+            </li>
+            <li>Hierarchia nagłówków to mapa strony dla czytnika ekranu, nie tylko styl.</li>
+          </ul>
+          <code>
+            img dekoracyjny: alt=""<br />
+            img merytoryczny: alt="Wykres sprzedaży Q1-Q4, 30% wzrost"<br /><br />
+            .error { border-color: #b52a1d; }<br />
+            &lt;p class="error-text"&gt;Podaj poprawny e-mail&lt;/p&gt;
+          </code>
+        </div>
+        <div class="demo-panel demo-wcag">
+          <article class="wcag-card">
+            <p class="token-label">Kontrast</p>
+            <p class="contrast-bad">Jasny tekst na jasnym tle (zły przykład)</p>
+            <p class="contrast-good">Ciemny tekst na jasnym tle (dobry przyklad)</p>
+          </article>
+
+          <article class="wcag-card">
+            <p class="token-label">Nie tylko kolor</p>
+            <div class="form-error" role="alert">
+              <span aria-hidden="true">!</span>
+              <span>Adres e-mail jest niepoprawny.</span>
+            </div>
+          </article>
+
+          <article class="wcag-card alt-card">
+            <p class="token-label">Teksty alternatywne</p>
+            <img
+              src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=420&q=80"
+              alt="Osoba korzysta z laptopa i czytnika ekranu podczas pracy"
+            />
+            <img src="https://images.unsplash.com/photo-1472457897821-70d3819a0e24?auto=format&fit=crop&w=420&q=80" alt="" class="decorative" />
+            <p class="alt-note">Drugie zdjęcie jest dekoracyjne i ma puste alt="".</p>
+          </article>
+
+          <article class="wcag-card headings-map">
+            <p class="token-label">Mapa nagłówków</p>
+            <ol>
+              <li>h1 - Strona produktu</li>
+              <li>h2 - Opis</li>
+              <li>h2 - Specyfikacja</li>
+              <li>h3 - Parametry baterii</li>
+            </ol>
+          </article>
+
+          <article class="wcag-card levels-card">
+            <p class="token-label">Poziomy A / AA / AAA</p>
+            <table class="levels-table">
+              <thead>
+                <tr>
+                  <th>Poziom</th>
+                  <th>Co obejmuje</th>
+                  <th>Kontrast tekstu</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>A</strong></td>
+                  <td>
+                    Absolutne minimum: alt dla obrazów, etykiety formularzy, możliwość obsługi klawiaturą, brak migania ekranu, struktura dokumentu, kolejność
+                    fokusu i nawigacji
+                  </td>
+                  <td>brak wymogu</td>
+                </tr>
+                <tr>
+                  <td><strong>AA</strong></td>
+                  <td>Standard prawny (EAA): powiększenie do 200%, podpisy wideo, widoczny focus (outline)</td>
+                  <td>4,5 : 1</td>
+                </tr>
+                <tr>
+                  <td><strong>AAA</strong></td>
+                  <td>
+                    Najwyższy poziom: rozszerzone opisy (np. audiodeskrypcja), większe dostępność treści (np. zoom, odstępy między znakami), bardziej
+                    szczegółowe opisy, brak limitu czasu (lub wydłużenie)
+                  </td>
+                  <td>7 : 1</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid-step" id="aria">
+        <div class="step-copy">
+          <span class="step-number">3</span>
+          <h2>Accessible Rich Internet Applications</h2>
+          <ul class="aria-topics">
+            <li>ARIA to zestaw atrybutów które pozwalają na lepsze opisanie elementów stron dla technologi asystujących (np. czytników ekranu)</li>
+            <li>Zasada główna - jeśli istnieje semantyczny element HTML, użyj go zamiast role ARIA.</li>
+            <li>ARIA dodajemy wtedy, gdy znacznik/atrybuty HTML nie pozwalają dostarczyć kontekstu informacji.</li>
+            <li>
+              <strong>1. Opisy i etykiety</strong>
+              <ul class="aria-sublist">
+                <li><code>aria-label</code> - nadaje etykietę "z powietrza" (gdy brak widocznego tekstu).</li>
+                <li><code>aria-labelledby</code> - wskazuje element, który opisuje dany element.</li>
+                <li><code>aria-describedby</code> - dodatkowy opis (np. hint, error).</li>
+                <li>Użycie: ikony, inputy i custom buttony bez czytelnego tekstu widocznego na ekranie.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>2. Stan elementu</strong>
+              <ul class="aria-sublist">
+                <li><code>aria-checked</code> - checkbox / toggle (<code>true</code>/<code>false</code>/<code>mixed</code>).</li>
+                <li><code>aria-selected</code> - zaznaczenie w listach i tabach.</li>
+                <li><code>aria-expanded</code> - informuje czy element jest rozwinięty (accordion, menu).</li>
+                <li><code>aria-pressed</code> - stan przycisku typu toggle.</li>
+                <li><code>aria-disabled</code> - nieaktywny element (czytelniejsze niż samo CSS).</li>
+              </ul>
+            </li>
+            <li>
+              <strong>3. Widoczność i dostępność</strong>
+              <ul class="aria-sublist">
+                <li><code>aria-hidden="true"</code> - ukrywa element przed screen readerem.</li>
+                <li><code>aria-live</code> - ogłasza dynamiczne zmiany (np. alerty).</li>
+                <li>Wartości: <code>polite</code>, <code>assertive</code>.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>4. Relacje między elementami</strong>
+              <ul class="aria-sublist">
+                <li><code>aria-controls</code> - wskazuje, co dany element kontroluje.</li>
+                <li><code>aria-owns</code> - wirtualnie "przypisuje" element w DOM.</li>
+                <li><code>aria-activedescendant</code> - wskazuje aktywny element w złożonych widgetach.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>5. Walidacja i formularze</strong>
+              <ul class="aria-sublist">
+                <li><code>aria-required</code> - oznacza pole wymagane.</li>
+                <li><code>aria-invalid</code> - sygnalizuje błąd w polu.</li>
+                <li><code>aria-errormessage</code> - wskazuje element z komunikatem błędu.</li>
+              </ul>
+            </li>
+            <li><strong>No ARIA is better than bad ARIA:</strong> jeśli natywny HTML wystarcza, nie dodawaj ARIA na siłę.</li>
+          </ul>
+          <code>
+            &lt;button aria-label="Zamknij panel"&gt;X&lt;/button&gt;<br />
+            &lt;input id="email" aria-describedby="emailHint emailError" aria-invalid="true" /&gt;<br />
+            &lt;p id="emailHint"&gt;Użyj adresu firmowego.&lt;/p&gt;<br />
+            &lt;p id="emailError" role="alert"&gt;Podaj poprawny e-mail.&lt;/p&gt;<br /><br />
+            &lt;button aria-expanded="false" aria-controls="faq1"&gt;Pokaż odpowiedź&lt;/button&gt;<br />
+            &lt;div id="faq1" hidden&gt;Treść odpowiedzi...&lt;/div&gt;
+          </code>
+        </div>
+        <div class="demo-panel demo-aria">
+          <article class="aria-card compare">
+            <p class="token-label">Złota zasada</p>
+            <div class="compare-line">
+              <span class="bad">div role="button"</span>
+              <span class="good">button</span>
+            </div>
+            <p>Natywny <strong>button</strong> ma obsługę klawiatury i focus domyślnie.</p>
+          </article>
+
+          <article class="aria-card">
+            <p class="token-label">aria-label</p>
+            <button class="icon-button" type="button" aria-label="Zamknij panel">X</button>
+            <p>Czytnik przeczyta: "Zamknij panel".</p>
+          </article>
+
+          <article class="aria-card">
+            <p class="token-label">aria-hidden</p>
+            <p>
+              <span aria-hidden="true" class="decor-star">★</span>
+              Dekoracyjna gwiazdka nie będzie odczytywana.
+            </p>
+          </article>
+
+          <article class="aria-card live-card">
+            <p class="token-label">aria-live</p>
+            <button id="addToCartBtn" type="button">Dodaj do koszyka</button>
+            <p id="liveRegion" aria-live="polite" class="live-region">Czekam na akcję.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid-step" id="focus">
+        <div class="step-copy">
+          <span class="step-number">4</span>
+          <h2>Nawigacja klawiaturą i focus</h2>
+          <ul>
+            <li>Focus ring jest sygnałem orientacji. Usuwanie <code>outline: none</code> bez zamiennika to poważny błąd.</li>
+            <li>tabindex="0" dołącza element do naturalnej kolejności tabulacji.</li>
+            <li>tabindex="-1" pozwala ustawić focus programowo (np. po otwarciu modala).</li>
+            <li>Użytkownik nie może utknąć w komponencie. Trzeba zapewnić wejście i wyjście.</li>
+          </ul>
+        </div>
+        <div class="demo-panel demo-focus">
+          <article class="focus-card">
+            <p class="token-label">Kolejność tabulacji</p>
+            <a href="#audyt">Przejdź do audytu</a>
+            <button type="button">Natywny przycisk</button>
+            <div tabindex="0" class="focus-box">tabindex="0" (osiągalny klawiaturą)</div>
+            <div tabindex="-1" class="focus-box muted">tabindex="-1" (tylko programowo)</div>
+          </article>
+
+          <article class="focus-card modal-demo">
+            <p class="token-label">Modal bez pułapki focusu</p>
+            <button id="openModalBtn" type="button">Otwórz modal</button>
+            <p>Po otwarciu fokus trafia do modala, po zamknięciu wraca na przycisk.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid-step" id="audyt">
+        <div class="step-copy">
+          <span class="step-number">5</span>
+          <h2>Szybki audyt - jak testować?</h2>
+          <ul>
+            <li>Narzędzia automatyczne (Lighthouse, WAVE, axe DevTools) są pomocne, ale wykrywają tylko część problemów.</li>
+            <li>Test "No Mouse": przejdź cały flow tylko klawiszami Tab, Shift+Tab, Enter.</li>
+            <li>Czytniki ekranu: NVDA (Windows) i VoiceOver (macOS) powinny czytać logiczną, spójną historię strony.</li>
+            <li>Jeden krótki film z realnego użycia czytnika zwykle zmienia perspektywę szybciej niż dziesiątki slajdów.</li>
+          </ul>
+        </div>
+        <div class="demo-panel demo-audit">
+          <article class="audit-toolkit">
+            <p class="token-label">Zestaw narzędzi</p>
+            <ul>
+              <li>Lighthouse (Chrome DevTools)</li>
+              <li><a href="https://wave.webaim.org/" target="_blank">WAVE (web)</a></li>
+              <li>
+                <a href="https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd" target="_blank">
+                  axe DevTools (rozszerzenie)
+                </a>
+              </li>
+              <li><a href="https://accessibilityinsights.io/" target="_blank">Accessibility Insights</a></li>
+              <li>
+                <a href="https://www.w3.org/WAI/test-evaluate/tools/list/" target="_blank">W3C WAI - lista narzędzi testowych</a>
+              </li>
+              <li><a href="https://www.accessibilitychecker.org/" target="_blank">Accessibility Checker</a></li>
+              <li>VoiceOver / NVDA</li>
+            </ul>
+          </article>
+
+          <article class="audit-toolkit">
+            <p class="token-label">Checklista</p>
+            <ol>
+              <li>Czy wszystkie interaktywne elementy mają focus?</li>
+              <li>Czy komunikaty błędu mają tekst i sens?</li>
+              <li>Czy nagłówki są w dobrej kolejności?</li>
+              <li>Czy obrazki mają właściwy alt?</li>
+              <li>Czy wymagane elementy posiadają ARIA?</li>
+              <li>Czy stroną można posługiwać się jedynie za pomocą klawiatury?</li>
+              <li>...a czytnikiem?</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="demoModal" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <div class="modal-content">
+        <h2 id="modalTitle">Przykład modala</h2>
+        <p id="modalDesc">Fokus został ustawiony na modal. Zamknij, a fokus wróci do przycisku otwierającego.</p>
+        <div class="modal-actions">
+          <button id="confirmModalBtn" type="button">Rozumiem</button>
+          <button id="closeModalBtn" type="button">Zamknij</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      const contrastToggleBtn = document.getElementById('contrastToggleBtn')
+
+      function setHighContrast(enabled) {
+        document.body.classList.toggle('high-contrast', enabled)
+        contrastToggleBtn.setAttribute('aria-pressed', String(enabled))
+      }
+
+      const prefersHighContrast = localStorage.getItem('highContrastMode') === 'true'
+      setHighContrast(prefersHighContrast)
+
+      contrastToggleBtn.addEventListener('click', () => {
+        const isEnabled = !document.body.classList.contains('high-contrast')
+        setHighContrast(isEnabled)
+        localStorage.setItem('highContrastMode', String(isEnabled))
+      })
+
+      const addToCartBtn = document.getElementById('addToCartBtn')
+      const liveRegion = document.getElementById('liveRegion')
+
+      addToCartBtn.addEventListener('click', () => {
+        liveRegion.textContent = 'Produkt dodany do koszyka.'
+      })
+
+      const openModalBtn = document.getElementById('openModalBtn')
+      const closeModalBtn = document.getElementById('closeModalBtn')
+      const confirmModalBtn = document.getElementById('confirmModalBtn')
+      const modal = document.getElementById('demoModal')
+
+      openModalBtn.addEventListener('click', () => {
+        modal.showModal()
+      })
+
+      closeModalBtn.addEventListener('click', () => modal.close())
+      confirmModalBtn.addEventListener('click', () => modal.close())
+
+      modal.addEventListener('click', event => {
+        if (event.target === modal) {
+          modal.close()
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Formularze - pełny przegląd</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="formularze.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Formularze</h1>
+    </header>
+
+    <main>
+      <section class="grid-step" id="struktura-form">
+        <div class="step-copy">
+          <span class="step-number">1</span>
+          <h2>Struktura i przesyłanie danych</h2>
+          <ul>
+            <li><strong>form</strong> zbiera pola i wysyła je na serwer.</li>
+            <li><strong>action</strong> wskazuje adres endpointu.</li>
+            <li><strong>method</strong> określa sposób przesyłania: GET lub POST.</li>
+            <li><strong>fieldset</strong> i <strong>legend</strong> porządkują pola semantycznie i wizualnie.</li>
+            <li>Dane wrażliwe (hasła, dane osobowe) wysyłamy przez <strong>POST</strong>, nigdy przez URL.</li>
+          </ul>
+          <code>
+            &lt;form action="/konto/rejestracja" method="post"&gt;<br />
+            &nbsp;&nbsp;&lt;fieldset&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;legend&gt;Dane konta&lt;/legend&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+            &nbsp;&nbsp;&lt;/fieldset&gt;<br />
+            &lt;/form&gt;
+          </code>
+        </div>
+
+        <div class="demo-panel demo-forms">
+          <form action="/szukaj" method="get" class="demo-form compact-form" novalidate>
+            <fieldset>
+              <legend>Przykład GET - wyszukiwanie</legend>
+              <label for="q">Fraza</label>
+              <input id="q" name="q" type="text" placeholder="np. kurs html" />
+              <button type="submit">Szukaj</button>
+            </fieldset>
+          </form>
+
+          <form action="/konto/rejestracja" method="post" class="demo-form compact-form">
+            <fieldset>
+              <legend>Przykład POST - dane wrażliwe</legend>
+              <label for="mail-post">Email</label>
+              <input id="mail-post" name="email" type="email" required />
+              <label for="pass-post">Hasło</label>
+              <input id="pass-post" name="haslo" type="password" required minlength="8" />
+              <button type="submit">Utwórz konto</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid-step" id="input-types">
+        <div class="step-copy">
+          <span class="step-number">2</span>
+          <h2>Pola wprowadzania danych - typy input</h2>
+          <ul>
+            <li>Podstawy: text, password, email, number.</li>
+            <li>Wybory: checkbox i radio, grupowane wspólnym atrybutem name.</li>
+            <li>HTML5: date, color, range, tel, search, url – lepszy UX i klawiatury mobilne.</li>
+            <li>Listy rozwijane: select z option; atrybut multiple pozwala wybrać kilka opcji naraz.</li>
+            <li>hidden – niewidoczne pole przesyłające dane (np. token CSRF); nie renderuje się w interfejsie.</li>
+            <li>textarea – wieloliniowy tekst; rows określa wysokość, wartość domyślna to treść elementu (nie value), resize kontrolowane przez CSS.</li>
+          </ul>
+          <code>
+            &lt;input type="email" name="kontakt_email" /&gt;<br />
+            &lt;input type="radio" name="plan" value="pro" /&gt;<br />
+            &lt;select name="kraj"&gt;...&lt;/select&gt;<br />
+            &lt;textarea name="wiadomosc" rows="4" maxlength="500"&gt;&lt;/textarea&gt;
+          </code>
+        </div>
+
+        <div class="demo-panel">
+          <form class="demo-form" action="#" method="post">
+            <div class="field-grid">
+              <div class="field">
+                <label for="imie">Text</label>
+                <input id="imie" name="imie" type="text" placeholder="Jan" />
+              </div>
+
+              <div class="field">
+                <label for="haslo">Password</label>
+                <input id="haslo" name="haslo_demo" type="password" placeholder="********" />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email_demo" type="email" placeholder="jan@example.com" />
+              </div>
+
+              <div class="field">
+                <label for="wiek">Number</label>
+                <input id="wiek" name="wiek" type="number" min="0" max="120" step="1" />
+              </div>
+
+              <div class="field">
+                <label for="data">Date</label>
+                <input id="data" name="data" type="date" />
+              </div>
+
+              <div class="field">
+                <label for="kolor">Color</label>
+                <input id="kolor" name="kolor" type="color" value="#ec5a2f" />
+              </div>
+
+              <div class="field">
+                <label for="glosnosc">Range</label>
+                <input id="glosnosc" name="glosnosc" type="range" min="0" max="100" value="45" />
+              </div>
+
+              <div class="field">
+                <label for="telefon">Tel</label>
+                <input id="telefon" name="telefon" type="tel" inputmode="tel" placeholder="+48 600 100 200" />
+              </div>
+
+              <div class="field full-width">
+                <span class="label-like">Checkbox</span>
+                <label class="inline"><input type="checkbox" name="zgoda_newsletter" /> Chcę otrzymywać newsletter</label>
+              </div>
+
+              <div class="field full-width">
+                <span class="label-like">Radio (ten sam name = jedna grupa)</span>
+                <div class="inline-group">
+                  <label class="inline"><input type="radio" name="plan" value="basic" checked /> Basic</label>
+                  <label class="inline"><input type="radio" name="plan" value="pro" /> Pro</label>
+                  <label class="inline"><input type="radio" name="plan" value="max" /> Max</label>
+                </div>
+              </div>
+
+              <div class="field full-width">
+                <label for="kraj">Select</label>
+                <select id="kraj" name="kraj">
+                  <option value="">Wybierz kraj</option>
+                  <option value="pl">Polska</option>
+                  <option value="cz">Czechy</option>
+                  <option value="de">Niemcy</option>
+                </select>
+              </div>
+
+              <div class="field full-width">
+                <label for="jezyki">Select multiple (Ctrl/Cmd + klik)</label>
+                <select id="jezyki" name="jezyki" multiple size="4">
+                  <option value="pl">Polski</option>
+                  <option value="en" selected>Angielski</option>
+                  <option value="de">Niemiecki</option>
+                  <option value="fr">Francuski</option>
+                  <option value="es">Hiszpański</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="szukaj">Search</label>
+                <input id="szukaj" name="szukaj" type="search" placeholder="Szukaj..." />
+              </div>
+
+              <div class="field">
+                <label for="strona">URL</label>
+                <input id="strona" name="strona" type="url" placeholder="https://example.com" />
+              </div>
+
+              <div class="field full-width">
+                <span class="label-like">Hidden – niewidoczne, nie renderuje się w interfejsie</span>
+                <input type="hidden" name="csrf_token" value="abc123" />
+                <p class="hint"><code class="inline-code">&lt;input type="hidden" name="csrf_token" value="abc123" /&gt;</code></p>
+              </div>
+
+              <div class="field full-width">
+                <label for="wiadomosc">Textarea (max 500 znaków)</label>
+                <textarea id="wiadomosc" name="wiadomosc" rows="4" maxlength="500" placeholder="Wpisz wiadomość..."></textarea>
+              </div>
+
+              <div class="field">
+                <label for="notatki">Textarea – resize: none</label>
+                <textarea id="notatki" name="notatki" rows="3" class="no-resize" placeholder="Nie można zmieniać rozmiaru"></textarea>
+              </div>
+
+              <div class="field">
+                <label for="log">Textarea – readonly</label>
+                <textarea id="log" name="log" rows="2" readonly>Wartość domyślna — treść elementu, nie atrybut value.</textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid-step" id="accessibility-ux">
+        <div class="step-copy">
+          <span class="step-number">3</span>
+          <h2>Dostępność i UX</h2>
+          <ul>
+            <li>Label łączymy z polem przez for i id.</li>
+            <li>Kliknięcie etykiety aktywuje pole i poprawia wygodę.</li>
+            <li>Placeholder to podpowiedź, ale nie zastępuje labela.</li>
+            <li>Pomocne atrybuty: readonly, disabled, autofocus.</li>
+          </ul>
+          <code>
+            &lt;label for="nick"&gt;Nick&lt;/label&gt;<br />
+            &lt;input id="nick" name="nick" autofocus /&gt;<br />
+            &lt;input value="nieedytowalne" readonly /&gt;
+          </code>
+        </div>
+
+        <div class="demo-panel">
+          <form class="demo-form" action="#" method="post">
+            <div class="field">
+              <label for="nick">Label, placeholder, autofocus</label>
+              <input id="nick" name="nick" type="text" autofocus placeholder="Kliknij etykietę lub pole" />
+            </div>
+
+            <div class="field">
+              <label for="tylko-odczyt">Readonly</label>
+              <input id="tylko-odczyt" name="readonly" type="text" value="To pole jest tylko do odczytu" readonly />
+            </div>
+
+            <div class="field">
+              <label for="nieaktywne">Disabled</label>
+              <input id="nieaktywne" name="disabled" type="text" value="To pole jest nieaktywne" disabled />
+            </div>
+
+            <p class="hint">Placeholder znika po wpisaniu tekstu i może być słabo widoczny. Etykieta powinna zostać stale widoczna.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid-step" id="validation">
+        <div class="step-copy">
+          <span class="step-number">4</span>
+          <h2>Walidacja po stronie klienta</h2>
+          <ul>
+            <li>Wbudowane atrybuty: required, minlength, maxlength, min i max.</li>
+            <li>pattern pozwala wymusić prosty format regex.</li>
+            <li>Przeglądarka sama pokazuje komunikaty błędów bez JavaScriptu.</li>
+            <li>novalidate na formularzu wyłącza wbudowaną walidację przeglądarki (np. do testów lub własnej walidacji JS).</li>
+          </ul>
+          <code>
+            &lt;input required minlength="3" maxlength="20" /&gt;<br />
+            &lt;input pattern="[A-Za-z]{2}[0-9]{4}" /&gt;<br />
+            &lt;form novalidate&gt;...&lt;/form&gt;
+          </code>
+        </div>
+
+        <div class="demo-panel">
+          <form class="demo-form" action="#" method="post">
+            <div class="field-grid">
+              <div class="field">
+                <label for="login">Login (3-20 znaków)</label>
+                <input id="login" name="login" required minlength="3" maxlength="20" />
+              </div>
+
+              <div class="field">
+                <label for="kod">Kod kursu (AA0000)</label>
+                <input id="kod" name="kod" required pattern="[A-Za-z]{2}[0-9]{4}" placeholder="np. TI2026" title="Dwie litery i cztery cyfry, np. TI2026" />
+              </div>
+
+              <div class="field">
+                <label for="ocena">Ocena (2-5)</label>
+                <input id="ocena" name="ocena" type="number" min="2" max="5" step="1" required />
+              </div>
+
+              <div class="field full-width">
+                <button type="submit">Sprawdź walidację</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid-step" id="buttons-and-files">
+        <div class="step-copy">
+          <span class="step-number">5</span>
+          <h2>Przyciski i interakcja z formularzem</h2>
+          <ul>
+            <li>button type="submit" wysyła formularz.</li>
+            <li>button type="reset" czyści pola do stanu początkowego.</li>
+            <li>button type="button" uruchamia akcje pomocnicze (np. JS), ale nie wysyła formularza.</li>
+            <li>Przesyłanie plików wymaga enctype="multipart/form-data".</li>
+          </ul>
+          <code>
+            &lt;form method="post" enctype="multipart/form-data"&gt;<br />
+            &nbsp;&nbsp;&lt;input type="file" name="avatar" /&gt;<br />
+            &nbsp;&nbsp;&lt;button type="submit"&gt;Wyślij&lt;/button&gt;<br />
+            &lt;/form&gt;
+          </code>
+        </div>
+
+        <div class="demo-panel">
+          <form class="demo-form" action="/profil/avatar" method="post" enctype="multipart/form-data">
+            <div class="field">
+              <label for="avatar">Plik avatar</label>
+              <input id="avatar" name="avatar" type="file" accept="image/*" required />
+            </div>
+
+            <div class="actions">
+              <button type="submit">Submit</button>
+              <button type="reset" class="ghost">Reset</button>
+              <button type="button" class="ghost">Button (bez wysyłki)</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid-step" id="modern-html-css">
+        <div class="step-copy">
+          <span class="step-number">6</span>
+          <h2>Dodatki</h2>
+          <ul>
+            <li>datalist podpowiada wartości bez ograniczania wpisu.</li>
+            <li>output działa jako semantyczny pojemnik na dane</li>
+            <li>meter i progress wizualizują odpowiednio stan i postęp - różnica semantyczna</li>
+            <li>autocomplete i inputmode poprawiają UX, zwłaszcza na mobile.</li>
+          </ul>
+          <code>
+            &lt;input list="miasta" name="miasto" /&gt;<br />
+            &lt;datalist id="miasta"&gt;...&lt;/datalist&gt;<br />
+            &lt;meter min="0" max="100" value="72"&gt;72%&lt;/meter&gt;
+          </code>
+        </div>
+
+        <div class="demo-panel">
+          <form class="demo-form" action="#" method="post">
+            <div class="field">
+              <label for="miasto">Miasto (datalist)</label>
+              <input id="miasto" name="miasto" list="miasta" autocomplete="address-level2" placeholder="Wpisz lub wybierz" />
+              <datalist id="miasta">
+                <option value="Kraków"></option>
+                <option value="Warszawa"></option>
+                <option value="Gdańsk"></option>
+                <option value="Wrocław"></option>
+              </datalist>
+            </div>
+
+            <div class="field">
+              <label for="moc">Range + output</label>
+              <div class="inline-group">
+                <input id="moc" name="moc" type="range" min="0" max="10" value="6" oninput="this.nextElementSibling.value = this.value + '/10'" />
+                <output for="moc">6/10</output>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="jakosc">Meter</label>
+              <meter id="jakosc" min="0" max="100" value="78" low="35" high="80" optimum="90">78/100</meter>
+            </div>
+
+            <div class="field">
+              <label for="postep">Progress</label>
+              <progress id="postep" max="100" value="64">64%</progress>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid-step" id="css-styling">
+        <div class="step-copy">
+          <span class="step-number">7</span>
+          <h2>Stylowanie formularzy CSS</h2>
+          <ul>
+            <li>:focus-within na .field podświetla etykietę gdy dowolne pole w środku ma focus.</li>
+            <li>:read-only wizualnie odróżnia pola tylko do odczytu od edytowalnych i disabled.</li>
+            <li>::file-selector-button pozwala ostylować przycisk wyboru pliku jak każdy inny element.</li>
+            <li>appearance: none usuwa natywny wygląd checkbox i radio — pełna kontrola z CSS.</li>
+            <li>Pseudo-klasy :focus, :valid i :invalid poprawiają informację zwrotną dla użytkownika.</li>
+          </ul>
+          <code>
+            .field:focus-within label { color: blue; }<br />
+            input:read-only { background: #f0f4f8; }<br />
+            ::file-selector-button { border-radius: 999px; }<br />
+            input[type='checkbox'] { appearance: none; }<br />
+            input[type='checkbox']:checked { background: var(--accent); }<br />
+            input:valid { border-color: green; }<br />
+            input:invalid { border-color: red; }
+          </code>
+        </div>
+
+        <div class="demo-panel">
+          <form class="demo-form" action="#" method="post">
+            <div class="field">
+              <label for="focus-demo">:focus-within (kliknij pole — etykieta zmieni kolor)</label>
+              <input id="focus-demo" name="focus-demo" type="text" placeholder="Kliknij tutaj" />
+            </div>
+
+            <div class="field">
+              <label for="readonly-css">:read-only (inne tło niż disabled)</label>
+              <input id="readonly-css" type="text" value="To pole jest tylko do odczytu" readonly />
+            </div>
+
+            <div class="field">
+              <label for="plik-css">::file-selector-button</label>
+              <input id="plik-css" name="plik-css" type="file" accept="image/*" />
+            </div>
+
+            <div class="field full-width">
+              <span class="label-like">Custom checkbox (appearance: none + :checked)</span>
+              <label class="inline">
+                <input type="checkbox" name="zgoda_custom" class="custom-check" checked />
+                Akceptuję regulamin
+              </label>
+            </div>
+
+            <div class="field full-width">
+              <span class="label-like">Custom radio (appearance: none + :checked)</span>
+              <div class="inline-group">
+                <label class="inline"><input type="radio" name="typ_custom" value="a" class="custom-radio" checked /> Opcja A</label>
+                <label class="inline"><input type="radio" name="typ_custom" value="b" class="custom-radio" /> Opcja B</label>
+                <label class="inline"><input type="radio" name="typ_custom" value="c" class="custom-radio" /> Opcja C</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
