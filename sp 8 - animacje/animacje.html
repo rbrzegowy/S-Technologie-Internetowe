@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Animacje CSS</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./animacje.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Animacje CSS</h1>
+    </header>
+
+    <main>
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">1</span>
+            <h2>transition</h2>
+            <ul>
+              <li>Zmienia stan po interakcji</li>
+              <li>Może też płynnie wprowadzać element z <code>display: none</code> dzięki <code>transition-behavior</code> i <code>@starting-style</code></li>
+            </ul>
+            <code class="code">
+              .box {<br />
+              &nbsp;&nbsp;transition:
+      &nbsp;&nbsp;transform 0.45s ease,<br/>
+    &nbsp;&nbsp;border-radius 0.45s ease;<br />
+              }<br />
+              .box:hover {<br />
+              &nbsp;&nbsp;transform: translateX(24px);<br />
+              &nbsp;&nbsp;border-radius: 50%;<br />
+              }<br /><br />
+              .panel {<br />
+              &nbsp;&nbsp;display: none;<br />
+              &nbsp;&nbsp;opacity: 0;<br />
+              &nbsp;&nbsp;transition: opacity 0.35s ease, display 0.35s allow-discrete;<br />
+              &nbsp;&nbsp;transition-behavior: allow-discrete;<br />
+              }<br />
+              .show .panel {<br />
+              &nbsp;&nbsp;display: block;<br />
+              &nbsp;&nbsp;opacity: 1;<br />
+              &nbsp;&nbsp;@starting-style { opacity: 0; }<br />
+              }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-1">
+            <div class="box hover-move" title="Najedź kursorem"></div>
+            <div class="discrete-demo">
+              <input type="checkbox" id="show-discrete-panel" class="discrete-toggle" />
+              <label for="show-discrete-panel" class="discrete-btn">Pokaż panel (display:none)</label>
+              <div class="discrete-panel">Wejście z <code>display: none</code></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">2</span>
+            <h2>@keyframes</h2>
+            <ul>
+              <li>Predefiniowana animacja</li>
+              <li>Animacja definiowana jest krokami (0-100%)</li>
+            </ul>
+            <code class="code">
+              @keyframes spin {<br />
+              &nbsp;&nbsp;from { transform: rotate(0deg); }<br />
+              &nbsp;&nbsp;to   { transform: rotate(360deg); }<br />
+              }<br />
+              .spinner {<br />
+              &nbsp;&nbsp;animation: spin 2s linear infinite;<br />
+              }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-2">
+            <div class="box spin" title="Obrót ciągły"></div>
+            <div class="box pulse" title="Skalowanie"></div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">3</span>
+            <h2>timing-function</h2>
+            <ul>
+              <li>Timing function definiuje przebieg animacji w czasie</li>
+              <li>Zmiana timing-function wpływa na dynamikę ruchu</li>
+              <li>Funkcje czasowe zmieniają odczuwany czas trwania animacji</li>
+              <li>Do dyspozycji mamy wbudowane timing functions</li>
+              <li>Dodatkowo - cubic-bezier() pozwala definiować własne krzywe</li>
+            </ul>
+            <code class="code">
+              .linear { animation-timing-function: linear; }<br />
+              .ease   { animation-timing-function: ease; }<br />
+              .bezier { animation-timing-function: cubic-bezier(0.39, 1.33, 0.55, -0.23); }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-3" style="flex-direction: column; align-items: stretch;">
+            <div class="lane"><small>linear</small><span class="timing linear"></span></div>
+            <div class="lane"><small>ease</small><span class="timing ease"></span></div>
+            <div class="lane"><small>custom bezier</small><span class="timing bezier"></span></div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">4</span>
+            <h2>delay</h2>
+            <ul>
+              <li>Delay opóźnia rozpoczęcie animacji</li>
+              <li>Przy tych samych keyframes i narastających opóźnieniach dostajemy efekt kontynuacji animacji po poprzedniej</li>
+            </ul>
+            <code class="code">
+              .a { animation: pop 1.5s ease-out 0s    infinite; }<br />
+              .b { animation: pop 1.5s ease-out 0.35s infinite; }<br />
+              .c { animation: pop 1.5s ease-out 0.7s  infinite; }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-4">
+            <div>
+              <div class="box delay-a"></div>
+              <div class="box delay-b"></div>
+              <div class="box delay-c"></div>
+            </div>
+            <div>
+              <button class="hover-delay-btn">bez delay</button>
+              <button class="hover-delay-btn hover-delay-short">delay 150ms</button>
+              <button class="hover-delay-btn hover-delay-long">delay 350ms</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">5</span>
+            <h2>fill-mode</h2>
+            <ul>
+              <li><code>forwards</code> zatrzymuje ostatni stan animacji</li>
+              <li><code>backwards</code> aplikuje styl 0% jeszcze przed startem (podczas delay)</li>
+            </ul>
+            <code class="code">
+              .fill-forwards { animation: fill-slide 1.4s ease forwards; }<br />
+              .fill-backwards { animation: fill-slide 1.4s ease 0.8s backwards; }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-fill">
+            <div class="box fill-forwards" title="forwards"></div>
+            <div class="box fill-backwards" title="backwards"></div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">6</span>
+            <h2>direction</h2>
+            <ul>
+              <li><code>normal</code>, <code>reverse</code>, <code>alternate</code>, <code>alternate-reverse</code></li>
+              <li>Ta sama animacja, inny kierunek odtwarzania</li>
+            </ul>
+            <code class="code">
+              .dir-normal  { animation-direction: normal; }<br />
+              .dir-reverse { animation-direction: reverse; }<br />
+              .dir-alt     { animation-direction: alternate; }<br />
+              .dir-alt-rev { animation-direction: alternate-reverse; }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-direction">
+            <div class="dir-row"><small>normal</small><span class="dir-dot dir-normal"></span></div>
+            <div class="dir-row"><small>reverse</small><span class="dir-dot dir-reverse"></span></div>
+            <div class="dir-row"><small>alternate</small><span class="dir-dot dir-alt"></span></div>
+            <div class="dir-row"><small>alternate-reverse</small><span class="dir-dot dir-alt-rev"></span></div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">7</span>
+            <h2>timeline i range</h2>
+            <ul>
+              <li>Animacja może zależeć od scrolla zamiast czasu</li>
+              <li><code>animation-timeline</code> i <code>animation-range</code> sterują zakresem aktywacji</li>
+            </ul>
+            <code class="code">
+              .range-item {<br />
+              &nbsp;&nbsp;animation: reveal-range linear both;<br />
+              &nbsp;&nbsp;animation-timeline: view(block);<br />
+              &nbsp;&nbsp;animation-range: entry 10% cover 50%;<br />
+              }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-timeline">
+            <div class="timeline-scroll">
+              <div class="timeline-spacer"></div>
+              <div class="range-item">Scrolluj ten blok</div>
+              <div class="timeline-spacer"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">8</span>
+            <h2>play-state</h2>
+            <ul>
+              <li><code>animation-play-state: paused</code> zatrzymuje animację</li>
+              <li>Częsty usecase: pauza po najechaniu</li>
+            </ul>
+            <code class="code">
+              .play-wheel { animation: spin 2.5s linear infinite; }<br />
+              .play-wheel:hover { animation-play-state: paused; }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-play">
+            <div class="play-wheel" title="Najedź, aby zatrzymać"></div>
+            <p>Najedź kursorem na koło, żeby zatrzymać obrót.</p>
+          </div>
+        </section>
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">9</span>
+            <h2>composition</h2>
+            <ul>
+              <li><code>animation-composition: add</code> pozwala składać wiele animacji</li>
+              <li>Przykład łączy ruch pionowy i poziomy na jednym elemencie</li>
+              <li>Możliwe wartości: add, replace (default), accumulate</li>
+            </ul>
+            <code class="code">
+              .composition-dot {<br />
+              &nbsp;&nbsp;animation: comp-x 2.2s ease-in-out infinite,
+              comp-y 1.3s ease-in-out infinite alternate;<br />
+              &nbsp;&nbsp;animation-composition: add, add;<br />
+              }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-composition">
+            <div class="composition-dot" title="animation-composition: add"></div>
+          </div>
+        </section>
+
+        <!-- <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">10</span>
+            <h2>animation-trigger</h2>
+            <ul>
+              <li>Eksperymentalny atrybut uruchamia animację po spełnieniu warunku (np. wejście w viewport)</li>
+              <li>Wspieraj progressive enhancement i fallback dla starszych przeglądarek</li>
+            </ul>
+            <code class="code">
+              @supports (animation-trigger: view()) {<br />
+              &nbsp;&nbsp;.trigger-target {<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;animation: trigger-pop 800ms ease both;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;animation-trigger: view();<br />
+              &nbsp;&nbsp;}<br />
+              }
+            </code>
+          </div>
+          <div class="demo-grid demo-grid-step-trigger">
+            <div class="trigger-scroll">
+              <div class="trigger-spacer"></div>
+              <div class="trigger-target">Trigger me</div>
+              <div class="trigger-spacer"></div>
+            </div>
+          </div>
+        </section> -->
+
+
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">10</span>
+            <h2>Debugowanie animacji w Google Chrome</h2>
+            <ul>
+              <li>Testuj wpływ właściwości bezpośrednio w DevTools, np. <code>animation-duration</code> i <code>animation-timing-function</code></li>
+              <li>W panelu <strong>Animations</strong> zatrzymuj, spowalniaj i analizuj przebieg animacji</li>
+              <li>Użyj <strong>Rendering</strong> - <em>Paint flashing</em>, aby wykryć kosztowne repainty</li>
+              <li>Również <strong>Rendering</strong> - testuj reduced motion</li>
+            </ul>
+            <code class="code">
+              /* szybki tryb debugowania */<br />
+              .debug * {<br />
+              &nbsp;&nbsp;animation-play-state: paused !important;<br />
+              &nbsp;&nbsp;transition: none !important;<br />
+              }<br />
+              /* potem włączaj pojedyncze animacje i porównuj efekt */
+            </code>
+          </div>
+          
+        </section>
+        <section class="grid-step">
+          <div class="step-copy">
+            <span class="step-number">11</span>
+            <h2>Dobre praktyki</h2>
+            <ul>
+              <li>Pereferuj <strong>transform</strong> nad innymi formami przekształceń</li>
+              <li>Pamiętaj dla kogo tworzysz animacje (rodzaj strony/aplikacji, sposób jej wykorzystania)</li>
+              <li>Animacje UI - krótkie, 100-300 ms</li>
+              <li>Przejścia pomiędzy widokami - ok. 300-600ms</li>
+              <li>Wspieraj <strong>prefers-reduced-motion</strong></li>
+              <li>Testuj klawiaturę - stan <code>:focus-visible</code> w parze z :hover (EAA i WCAG)</li>
+            </ul>
+            <code class="code">
+              @media (prefers-reduced-motion: reduce) {<br />
+              &nbsp;&nbsp;* {<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;animation: none !important;<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;transition: none !important;<br />
+              &nbsp;&nbsp;}<br />
+              }
+            </code>
+          </div>
+        </section>
+    </main>
+  </body>
+</html>
+</html>

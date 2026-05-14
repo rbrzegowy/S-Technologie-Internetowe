@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Animacje CSS - przykłady</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./animacje-przyklady.css" />
+  </head>
+  <body>
+    <div class="page-progress" aria-hidden="true"></div>
+    <div class="spotlight" aria-hidden="true"></div>
+
+    <header>
+      <h1>Animacje CSS - przykłady</h1>
+    </header>
+
+    <main>
+      <header class="hero">
+        <div class="float one"></div>
+        <div class="float two"></div>
+        <div class="float three"></div>
+        <div>
+          <h2 class="typing">Przykłady animacji CSS</h2>
+          <p>Mikrointerakcje, efekty przewijania, karty, View Transitions API</p>
+          <div class="btn-row">
+            <button class="btn magnetic">Magnetyczny przycisk</button>
+            <button class="btn liquid">Połysk</button>
+            <button class="btn" id="themeBtn">Tryb jasny/ciemny</button>
+          </div>
+        </div>
+      </header>
+      <article>
+        <section class="step reveal" id="micro">
+          <h3>Mikrointerakcje w UI</h3>
+          <p>Efekty hover i focus. Przełącznik, checkbox, placholder.</p>
+          <div class="demo-row">
+            <input class="focus-input" placeholder="Animowany pierścień fokusu" />
+            <label class="switch" aria-label="Przełącznik ze sprężyną">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="demo-row" style="margin-top: 10px">
+            <label class="checkbox-wrap">
+              <input class="check-input" type="checkbox" />
+              <span class="spring-check"
+                ><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.3">
+                  <path d="M2 9l3 3 8-8"></path></svg
+              ></span>
+              Checkbox ze sprężyną
+            </label>
+          </div>
+          <div style="margin-top: 12px; display: grid; gap: 8px">
+            <div class="skeleton title"></div>
+            <div class="skeleton line"></div>
+            <div class="skeleton line" style="width: 84%"></div>
+          </div>
+        </section>
+
+        <section class="step reveal" id="scroll">
+          <h3>Animacje przy przewijaniu</h3>
+          <p>Odsłanianie przy przewijaniu, hero z paralaksą, pasek postępu i sekcje z przyciąganiem.</p>
+          <div class="parallax-box"></div>
+          <p>Przewijanie w poziomie</p>
+          <div class="snap-wrap" style="margin-top: 10px">
+            <article class="snap-item">Sekcja 1</article>
+            <article class="snap-item">Sekcja 2</article>
+            <article class="snap-item">Sekcja 3</article>
+            <article class="snap-item">Sekcja 4</article>
+            <article class="snap-item">Sekcja 5</article>
+            <article class="snap-item">Sekcja 6</article>
+            <article class="snap-item">Sekcja 7</article>
+            <article class="snap-item">Sekcja 8</article>
+            <article class="snap-item">Sekcja 9</article>
+            <article class="snap-item">Sekcja 10</article>
+            <article class="snap-item">Sekcja 11</article>
+            <article class="snap-item">Sekcja 12</article>
+          </div>
+        </section>
+
+        <section class="step reveal" id="cards">
+          <h3>Animacje kart</h3>
+          <p>Pochylenie 3D, rozszerzanie, unoszenie planów cenowych na hover i karuzela stosu.</p>
+          <div class="tilt-grid">
+            <article class="tilt-card">Karta 3D</article>
+            <article class="tilt-card">Karta 3D</article>
+            <article class="tilt-card">Karta 3D</article>
+          </div>
+          <div class="expand" style="margin-top: 10px">
+            <article class="exp-item">
+              <strong>Rozszerzana karta A</strong>
+              <p>Rozszerza tresc po hover.</p>
+            </article>
+            <article class="exp-item">
+              <strong>Rozszerzana karta B</strong>
+              <p>Przydatne dla FAQ / list.</p>
+            </article>
+          </div>
+          <div class="pricing" style="margin-top: 10px">
+            <article class="plan">Start</article>
+            <article class="plan">Profesjonalny</article>
+            <article class="plan">Skala</article>
+          </div>
+          <div class="stack" style="margin-top: 10px">
+            <article class="card">Stos 1</article>
+            <article class="card">Stos 2</article>
+            <article class="card">Stos 3</article>
+          </div>
+        </section>
+
+        <section class="step reveal" id="cube">
+          <h3>Obracający się półprzezroczysty sześcian</h3>
+          <p>Infinite keyframes: ciągły obrót 3D + delikatne pulsowanie całej bryły.</p>
+          <div class="cube-stage">
+            <div class="cube-pulse">
+              <div class="cube-3d" aria-label="Półprzezroczysty sześcian 3D">
+                <span class="cube-face front"></span>
+                <span class="cube-face back"></span>
+                <span class="cube-face right"></span>
+                <span class="cube-face left"></span>
+                <span class="cube-face top"></span>
+                <span class="cube-face bottom"></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="step reveal" id="wow">
+          <h3>Ciekawe efekty</h3>
+          <p>Morfująca bryła, neonowa poświata, animowane gradienty, marquee, rysowanie SVG.</p>
+          <div class="demo-row">
+            <div class="blob"></div>
+            <div class="neon">Neonowa poświata</div>
+          </div>
+          <div class="gradient-anim" style="margin-top: 10px"></div>
+          <div class="marquee" style="margin-top: 10px">
+            <div>
+              <span>nieskończony pasek przewijany bez JS</span><span>nieskończony pasek przewijany bez JS</span><span>nieskończony pasek przewijany bez JS</span
+              ><span>nieskończony pasek przewijany bez JS</span>
+            </div>
+          </div>
+          <svg class="svg-path" viewBox="0 0 500 70" fill="none" style="margin-top: 10px">
+            <path d="M10 52 C 120 6, 180 66, 250 32 S 420 20, 490 52" stroke="#1f6ea7" stroke-width="4" stroke-linecap="round" />
+          </svg>
+          <div class="mask-reveal" style="margin-top: 10px"></div>
+          <div class="particle-bg" style="margin-top: 10px"></div>
+        </section>
+
+        <section class="step reveal" id="practical">
+          <h3>Animacje z JS (interakcja z użytkownikiem)</h3>
+          <p>Powiadomienia toast, wejście/wyjście modalu, akordeon, zakładki i lista rozwijana.</p>
+          <div class="demo-row">
+            <button class="btn" style="background: #1f6ea7" id="toastBtn">Pokaż toast</button>
+            <button class="btn" style="background: #e95f34" id="modalBtn">Otwórz modal</button>
+            <div class="dropdown">
+              <button>Animowana lista rozwijana</button>
+              <div class="dropdown-menu">Pozycja A<br />Pozycja B<br />Pozycja C</div>
+            </div>
+          </div>
+          <div class="toast-wrap" id="toastWrap" style="margin-top: 10px"></div>
+          <div class="faq" style="margin-top: 10px">
+            <details>
+              <summary>Akordeon FAQ - dlaczego transform + opacity?</summary>
+              <p>Bo najczesciej omijaja kosztowny layout i repaint.</p>
+            </details>
+            <details>
+              <summary>Jak ograniczyc motion?</summary>
+              <p>prefers-reduced-motion i spokojniejsze timingi.</p>
+            </details>
+          </div>
+          <div class="tabs" style="margin-top: 10px">
+            <div class="tab-head">
+              <button type="button" data-tab="a">Tab A</button>
+              <button type="button" data-tab="b">Tab B</button>
+              <button type="button" data-tab="c">Tab C</button>
+            </div>
+            <div class="tab-panel active" data-panel="a">Przejście zakładek: panel A</div>
+            <div class="tab-panel" data-panel="b">Przejście zakładek: panel B</div>
+            <div class="tab-panel" data-panel="c">Przejście zakładek: panel C</div>
+          </div>
+        </section>
+
+        <section class="step reveal" id="modern">
+          <h3>View Transitions API i nowoczesne CSS</h3>
+          <p>@starting-style, transition-behavior, animation-timeline, scroll-driven animations i :has().</p>
+          <div class="demo-row">
+            <button class="btn" style="background: #1f6ea7" id="layoutBtn">Przełącz układ (VT)</button>
+            <button class="btn" style="background: #5f6976" id="discreteBtn">Przełącz dyskretne przejście</button>
+            <button class="btn" style="background: #384055" id="counterBtn">Demo counter-set</button>
+          </div>
+          <div class="vt-layout" id="vtLayout" style="margin-top: 10px">
+            <article class="vt-item" style="--vt-name: card1">Element 1</article>
+            <article class="vt-item" style="--vt-name: card2">Element 2</article>
+            <article class="vt-item" style="--vt-name: card3">Element 3</article>
+          </div>
+          <div class="demo-row" style="margin-top: 10px">
+            <div class="counter" id="counter"></div>
+            <span class="note">Counter jest zmieniany z CSS custom property.</span>
+          </div>
+          <div class="discrete-box" id="discreteBox">transition-behavior: allow-discrete dla display + opacity.</div>
+          <div class="container-demo scroll-link" style="margin-top: 10px">
+            <div class="container-box"></div>
+            <p class="note">Container query zmienia animacje zaleznie od szerokosci kontenera.</p>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <dialog id="modal">
+      <h3>Wejście/wyjście modalu</h3>
+      <p>Wejście modalu korzysta z @starting-style.</p>
+      <button id="closeModal">Zamknij</button>
+    </dialog>
+
+    <script>
+      const root = document.documentElement
+      const revealItems = document.querySelectorAll('.reveal')
+      const toastWrap = document.getElementById('toastWrap')
+      const toastBtn = document.getElementById('toastBtn')
+      const modal = document.getElementById('modal')
+      const modalBtn = document.getElementById('modalBtn')
+      const closeModal = document.getElementById('closeModal')
+      const themeBtn = document.getElementById('themeBtn')
+      const layoutBtn = document.getElementById('layoutBtn')
+      const vtLayout = document.getElementById('vtLayout')
+      const counter = document.getElementById('counter')
+      const counterBtn = document.getElementById('counterBtn')
+      const discreteBtn = document.getElementById('discreteBtn')
+      const discreteBox = document.getElementById('discreteBox')
+
+      function setProgress() {
+        const max = document.body.scrollHeight - window.innerHeight
+        const ratio = max > 0 ? window.scrollY / max : 0
+        root.style.setProperty('--scroll-progress', String(ratio))
+        root.style.setProperty('--scroll-y', window.scrollY + 'px')
+      }
+
+      function revealOnScroll() {
+        revealItems.forEach(item => {
+          const rect = item.getBoundingClientRect()
+          if (rect.top < window.innerHeight * 0.88) item.classList.add('show')
+        })
+      }
+
+      function onScroll() {
+        setProgress()
+        revealOnScroll()
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true })
+      window.addEventListener('resize', setProgress)
+
+      toastBtn.addEventListener('click', () => {
+        const t = document.createElement('div')
+        t.className = 'toast'
+        t.textContent = 'Zapisano! Animacja powiadomienia toast.'
+        toastWrap.prepend(t)
+        requestAnimationFrame(() => t.classList.add('show'))
+        setTimeout(() => {
+          t.classList.remove('show')
+          setTimeout(() => t.remove(), 280)
+        }, 2200)
+      })
+
+      modalBtn.addEventListener('click', () => modal.showModal())
+      closeModal.addEventListener('click', () => modal.close())
+      modal.addEventListener('click', e => {
+        if (e.target === modal) modal.close()
+      })
+
+      document.querySelectorAll('[data-tab]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-tab')
+          document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.getAttribute('data-panel') === id))
+        })
+      })
+
+      themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark')
+      })
+
+      layoutBtn.addEventListener('click', () => {
+        const run = () => vtLayout.classList.toggle('compact')
+        if (document.startViewTransition) {
+          document.startViewTransition(run)
+        } else {
+          run()
+        }
+      })
+
+      let value = 0
+      counter.style.setProperty('--score', value)
+      counterBtn.addEventListener('click', () => {
+        value = (value + 7) % 100
+        counter.style.setProperty('--score', value)
+      })
+
+      discreteBtn.addEventListener('click', () => {
+        discreteBox.classList.toggle('show')
+      })
+
+      onScroll()
+    </script>
+  </body>
+</html>
