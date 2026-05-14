@@ -195,7 +195,7 @@ main header {
   }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 760px) and (max-width: 1159px) {
   .example-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
