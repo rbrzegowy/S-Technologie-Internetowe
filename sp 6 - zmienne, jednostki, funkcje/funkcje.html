@@ -135,7 +135,10 @@
           <ul>
             <li><code>repeat()</code> upraszcza definicję kolumn i wierszy</li>
             <li><code>minmax()</code> daje elastyczne granice dla tracków</li>
-            <li><code>fit-content()</code> ogranicza szerokość kolumny do sensownego maksimum</li>
+            <li>
+              <code>fit-content()</code> Dostosuj szerokość do treści ale nie więcej niż max X. Skrót do
+              <code>min(maximum size, max(minimum size, argument))</code>
+            </li>
           </ul>
           <code>grid-template-columns: repeat(3, minmax(120px, 1fr)) fit-content(220px);</code>
         </div>
