@@ -96,6 +96,10 @@ code {
   font-size: 13px;
   line-height: 1.5;
 }
+li code {
+  padding: 7px 10px;
+  background-color: #687889;
+}
 
 .demo-panel {
   display: grid;

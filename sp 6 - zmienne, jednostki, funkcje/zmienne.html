@@ -217,7 +217,68 @@
           </article>
         </div>
       </section>
-
+<section class="grid-step">
+        <div class="step-copy">
+          <span class="step-number">7</span>
+          <h2>Deklaracja zmiennej z typem - @property</h2>
+          <ul>
+            <li>Możesz zadeklarować zmienną CSS z określonym typem i wartościami domyślnymi za pomocą <code>@property</code>.</li>
+            <li>To pozwala na animowanie zmiennych i zapewnia lepszą kontrolę nad ich typem.</li>
+            <li>Podstawowa składnia:</li>
+          </ul>
+          <code>
+            @property --my-color {<br/>
+              syntax: '&;lt;color&gt;';<br/>
+              inherits: true;<br/>
+              initial-value: #ff6600;<br/>
+            }<br/>
+            @property --my-size {<br/>
+              syntax: '&;lt;length-percentage&gt;';<br/>
+              inherits: false;<br/>
+              initial-value: 1rem;<br/>
+            }
+          </code>
+          <ul>
+            <li><strong>syntax</strong>: określa typ wartości (np. <code>&lt;color&gt;</code>, <code>&lt;length&gt;</code>, <code>&lt;number&gt;</code>, <code>&lt;percentage&gt;</code>, <code>&lt;length-percentage&gt;</code>, <code>&lt;angle&gt;</code>, <code>&lt;image&gt;</code>, <code>&lt;integer&gt;</code>, <code>&lt;custom-ident&gt;</code>).</li>
+            <li><strong>inherits</strong>: czy zmienna dziedziczy wartość z rodzica.</li>
+            <li><strong>initial-value</strong>: wartość domyślna.</li>
+          </ul>
+        </div>
+          <div class="demo-panel demo-property-anim">
+          <button class="property-anim-btn" onclick="this.classList.toggle('active')">
+            @property
+          </button>
+          <style>
+            @property --my-color {
+              syntax: '<color>';
+              inherits: true;
+              initial-value: #ff6600;
+            }
+            @property --my-size {
+              syntax: '<length>';
+              inherits: false;
+              initial-value: 12px;
+            }
+            .property-anim-btn {
+              --my-color: #ff6600; 
+              --my-size: 32px;
+              color: var(--my-color);
+              font-size: var(--my-size);
+              border: 2px solid var(--my-color);
+              padding: 15px 20px;
+              border-radius: 0.5em; 
+              background: #fff; 
+              cursor: pointer;
+              transition: --my-color 1s, --my-size 1s;
+            }
+            .property-anim-btn.active {
+              --my-color: #17906f;
+              --my-size: 2.5rem;
+            }
+          </style>
+          <p style="margin-top:1em;">Kliknij przycisk, aby zobaczyć animację zmiennych zadeklarowanych przez <code>@property</code>.</p>
+        </div>
+      </section>
     </main>
   </body>
 </html>
