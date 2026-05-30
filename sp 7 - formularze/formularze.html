@@ -234,10 +234,11 @@
           <span class="step-number">4</span>
           <h2>Walidacja po stronie klienta</h2>
           <ul>
-            <li>Wbudowane atrybuty: required, minlength, maxlength, min i max.</li>
+            <li>Wbudowane atrybuty: type, pattern,required, minlength, maxlength, min i max.</li>
             <li>pattern pozwala wymusić prosty format regex.</li>
             <li>Przeglądarka sama pokazuje komunikaty błędów bez JavaScriptu.</li>
             <li>novalidate na formularzu wyłącza wbudowaną walidację przeglądarki (np. do testów lub własnej walidacji JS).</li>
+            <li>Pseudo-elementy CSS: :valid, :invalid (:user-invalid), :required, :optional.</li>
           </ul>
           <code>
             &lt;input required minlength="3" maxlength="20" /&gt;<br />
@@ -255,7 +256,7 @@
               </div>
 
               <div class="field">
-                <label for="kod">Kod kursu (AA0000)</label>
+                <label for="kod">Kod kursu (AA0000) (z :user-invalid)</label>
                 <input id="kod" name="kod" required pattern="[A-Za-z]{2}[0-9]{4}" placeholder="np. TI2026" title="Dwie litery i cztery cyfry, np. TI2026" />
               </div>
 
@@ -314,7 +315,8 @@
             <li>datalist podpowiada wartości bez ograniczania wpisu.</li>
             <li>output działa jako semantyczny pojemnik na dane</li>
             <li>meter i progress wizualizują odpowiednio stan i postęp - różnica semantyczna</li>
-            <li>autocomplete i inputmode poprawiają UX, zwłaszcza na mobile.</li>
+            <li>autocomplete - jakie (i czy) wyświetlać podpowiedzi</li>
+            <li>inputmode - jaki typ danych wprowadzamy (np. do pokazania odpowiedniej klawiatury na mobile)</li>
           </ul>
           <code>
             &lt;input list="miasta" name="miasto" /&gt;<br />
@@ -366,7 +368,7 @@
             <li>:read-only wizualnie odróżnia pola tylko do odczytu od edytowalnych i disabled.</li>
             <li>::file-selector-button pozwala ostylować przycisk wyboru pliku jak każdy inny element.</li>
             <li>appearance: none usuwa natywny wygląd checkbox i radio — pełna kontrola z CSS.</li>
-            <li>Pseudo-klasy :focus, :valid i :invalid poprawiają informację zwrotną dla użytkownika.</li>
+            <li>Pseudo-klasy :focus, :valid i :invalid (:user-invalid) poprawiają informację zwrotną dla użytkownika.</li>
           </ul>
           <code>
             .field:focus-within label { color: blue; }<br />
