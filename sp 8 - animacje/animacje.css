@@ -148,7 +148,7 @@ nav > ul {
   transition-property: transform, border-radius; */
 }
 .hover-move:hover {
-  transform: translateX(24px) rotate(12deg);
+  transform: translateY(24px) rotate(45deg);
   border-radius: 50%;
 }
 
@@ -250,7 +250,7 @@ nav > ul {
   height: 22px;
   border-radius: 50%;
   background: #4a72b2;
-  animation: move 2.8s infinite;
+  animation: move 3s infinite;
 }
 .timing.linear {
   animation-timing-function: linear;
@@ -258,6 +258,16 @@ nav > ul {
 .timing.ease {
   animation-timing-function: ease;
 }
+.timing.ease-in {
+  animation-timing-function: ease-in;
+}
+.timing.ease-out {
+  animation-timing-function: ease-out;
+}
+.timing.ease-in-out {
+  animation-timing-function: ease-in-out;
+}
+
 .timing.bezier {
   animation-timing-function: cubic-bezier(0.39, 1.33, 0.55, -0.23);
 }
@@ -381,7 +391,7 @@ nav > ul {
 }
 
 .timeline-spacer {
-  height: 80px;
+  height: 120px;
 }
 
 .range-item {
@@ -397,7 +407,7 @@ nav > ul {
   .range-item {
     animation: reveal-range linear both;
     animation-timeline: view(block);
-    animation-range: entry 10% cover 50%;
+    animation-range: entry 5% cover 90%;
   }
 }
 
@@ -481,7 +491,7 @@ nav > ul {
 }
 @keyframes move {
   to {
-    transform: translateX(180px);
+    transform: translateX(280px);
   }
 }
 
@@ -546,7 +556,7 @@ nav > ul {
     transform: translateX(0);
   }
   to {
-    transform: translateX(140px);
+    transform: translateX(280px);
   }
 }
 
@@ -555,7 +565,7 @@ nav > ul {
     transform: translateY(0);
   }
   to {
-    transform: translateY(-16px);
+    transform: translateY(-42px);
   }
 }
 

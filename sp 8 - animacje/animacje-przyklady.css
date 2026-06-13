@@ -318,7 +318,7 @@ body {
   border-radius: var(--radius);
   background:
     linear-gradient(rgba(10, 20, 30, 0.3), rgba(10, 20, 30, 0.4)),
-    url('./startuper-hover-1-299x347.jpg') center/cover;
+    url('./mountains.jpg') center/cover;
   transform: translateY(calc(var(--scroll-y, 0px) * -0.2));
   margin-top: 80px;
 }

@@ -7,9 +7,12 @@
   </head>
   <body>
     <audio src="starwars.webm" autoplay id="player"></audio>
+    <div id="intro">
+      A long time ago, in a galaxy far, <br />
+      far away....
+    </div>
     <div id="container">
-      <div id="txt">
-        <p>A long time ago, in a galaxy far, far away....</p>
+      <div id="story">
         <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.</p>
         <p>
           During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the Death Star, an armored space station with enough
@@ -23,8 +26,8 @@
     </div>
     <script>
       document.querySelector('html').addEventListener('click', () => {
-        const player = document.querySelector('#player')
-        player.currentTime = 0
+        const player = document.querySelector('audio')
+        player.currentTihatme = 0
         player.play()
       })
     </script>

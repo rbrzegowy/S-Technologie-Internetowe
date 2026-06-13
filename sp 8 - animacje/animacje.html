@@ -24,12 +24,11 @@
             </ul>
             <code class="code">
               .box {<br />
-              &nbsp;&nbsp;transition:
-      &nbsp;&nbsp;transform 0.45s ease,<br/>
-    &nbsp;&nbsp;border-radius 0.45s ease;<br />
+              &nbsp;&nbsp;transition: transform 0.45s ease,<br/>
+              &nbsp;&nbsp;border-radius: 0.45s ease;<br />
               }<br />
               .box:hover {<br />
-              &nbsp;&nbsp;transform: translateX(24px);<br />
+              &nbsp;&nbsp;transform: translateY(24px);<br />
               &nbsp;&nbsp;border-radius: 50%;<br />
               }<br /><br />
               .panel {<br />
@@ -99,6 +98,9 @@
           <div class="demo-grid demo-grid-step-3" style="flex-direction: column; align-items: stretch;">
             <div class="lane"><small>linear</small><span class="timing linear"></span></div>
             <div class="lane"><small>ease</small><span class="timing ease"></span></div>
+            <div class="lane"><small>ease-in</small><span class="timing ease-in"></span></div>
+            <div class="lane"><small>ease-out</small><span class="timing ease-out"></span></div>
+            <div class="lane"><small>ease-in-out</small><span class="timing ease-in-out"></span></div>
             <div class="lane"><small>custom bezier</small><span class="timing bezier"></span></div>
           </div>
         </section>
@@ -180,12 +182,13 @@
             <ul>
               <li>Animacja może zależeć od scrolla zamiast czasu</li>
               <li><code>animation-timeline</code> i <code>animation-range</code> sterują zakresem aktywacji</li>
+              <li>stany elementu dla range: <code>entry</code>, <code>cover</code>, <code>exit</code></li>
             </ul>
             <code class="code">
               .range-item {<br />
               &nbsp;&nbsp;animation: reveal-range linear both;<br />
               &nbsp;&nbsp;animation-timeline: view(block);<br />
-              &nbsp;&nbsp;animation-range: entry 10% cover 50%;<br />
+              &nbsp;&nbsp;animation-range: entry 5% cover 90%;<br />
               }
             </code>
           </div>
@@ -239,42 +242,16 @@
           </div>
         </section>
 
-        <!-- <section class="grid-step">
-          <div class="step-copy">
-            <span class="step-number">10</span>
-            <h2>animation-trigger</h2>
-            <ul>
-              <li>Eksperymentalny atrybut uruchamia animację po spełnieniu warunku (np. wejście w viewport)</li>
-              <li>Wspieraj progressive enhancement i fallback dla starszych przeglądarek</li>
-            </ul>
-            <code class="code">
-              @supports (animation-trigger: view()) {<br />
-              &nbsp;&nbsp;.trigger-target {<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;animation: trigger-pop 800ms ease both;<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;animation-trigger: view();<br />
-              &nbsp;&nbsp;}<br />
-              }
-            </code>
-          </div>
-          <div class="demo-grid demo-grid-step-trigger">
-            <div class="trigger-scroll">
-              <div class="trigger-spacer"></div>
-              <div class="trigger-target">Trigger me</div>
-              <div class="trigger-spacer"></div>
-            </div>
-          </div>
-        </section> -->
-
-
         <section class="grid-step">
           <div class="step-copy">
             <span class="step-number">10</span>
             <h2>Debugowanie animacji w Google Chrome</h2>
             <ul>
               <li>Testuj wpływ właściwości bezpośrednio w DevTools, np. <code>animation-duration</code> i <code>animation-timing-function</code></li>
-              <li>W panelu <strong>Animations</strong> zatrzymuj, spowalniaj i analizuj przebieg animacji</li>
-              <li>Użyj <strong>Rendering</strong> - <em>Paint flashing</em>, aby wykryć kosztowne repainty</li>
+              <li>Panel <strong>Animations</strong> - zatrzymuj, spowalniaj i analizuj przebieg animacji</li>
+              <li>Panel <strong>Rendering</strong> - <em>Paint flashing</em>, aby zobaczyć repaint elementów</li>
               <li>Również <strong>Rendering</strong> - testuj reduced motion</li>
+              <li>Panel <strong>Performance</strong> - profilowanie js i renderowania strony</li>
             </ul>
             <code class="code">
               /* szybki tryb debugowania */<br />

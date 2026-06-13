@@ -1,29 +1,82 @@
 body {
   background: black;
-  color: white;
   overflow: hidden;
+  font-family: 'Arial', sans-serif;
 }
 
+#intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  filter: blur(2px);
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2268cd;
+  animation: intro 4s ease-in-out;
+}
 #container {
-  perspective: 410px;
+  perspective: 600px;
 }
 
-#txt {
-  font-size: 20px;
+#story {
+  font-size: 16px;
   line-height: 22px;
-  width: 600px;
+  width: 350px;
   margin: 0 auto;
   position: relative;
   text-align: center;
-  transform: rotateX(45deg) translateY(500px);
-  animation: begin 45s linear;
+  filter: blur(0.5px);
+  transform: rotateX(70deg) translateY(650px);
+  animation: story 45s 4s linear;
+  color: rgb(180, 180, 92);
 }
 
-@keyframes begin {
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+
+  15% {
+    opacity: 1;
+    transform: translate(-1px, 1px);
+  }
+
+  30% {
+    transform: translate(1px, -1px);
+  }
+
+  45% {
+    transform: translate(-1px, 0);
+  }
+
+  60% {
+    transform: translate(1px, 1px);
+  }
+
+  75% {
+    transform: translate(0, -1px);
+  }
+  90% {
+    transform: translate(1, 1px);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+@keyframes story {
   0% {
   } /* from */
   100% {
     /* to */
-    transform: rotateX(45deg) translateY(-300px);
+    transform: rotateX(70deg) translateY(-100px);
   }
 }
